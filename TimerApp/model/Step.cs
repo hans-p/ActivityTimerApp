@@ -1,6 +1,6 @@
 using System;
 
-namespace TimerApp.model
+namespace TimerApp.Model
 {
     enum ContinuationMode
     {

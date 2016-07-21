@@ -50,8 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
-    <Compile Include="model\Recipe.cs" />
-    <Compile Include="model\Step.cs" />
+    <Compile Include="Model\Recipe.cs" />
+    <Compile Include="Model\Recipes.cs" />
+    <Compile Include="Model\Step.cs" />
+    <Compile Include="RecipePreview\RecipePreviewActivity.cs" />
+    <Compile Include="RecipeSelect\RecipeAdapter.cs" />
+    <Compile Include="RecipeSelect\RecipeSelectActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -70,6 +74,15 @@
     <None Include="Properties\AndroidManifest.xml">
       <SubType>Designer</SubType>
     </None>
+    <AndroidResource Include="Resources\layout\Recipe.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\RecipeList.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\RecipeListAdapterView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\" />

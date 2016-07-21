@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace TimerApp.model
+namespace TimerApp.Model
 {
     class Recipe
     {

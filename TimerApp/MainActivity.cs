@@ -1,14 +1,13 @@
 ﻿using Android.App;
-using Android.Widget;
 using Android.OS;
-using TimerApp.model;
+using Android.Widget;
 using System;
-using Android.Views;
 using System.Collections.Generic;
+using TimerApp.Model;
 
 namespace TimerApp
 {
-    [Activity(Label = "TimerApp", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "TimerApp", /*MainLauncher = true,*/ Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
         Recipe recipe;
@@ -56,7 +55,7 @@ namespace TimerApp
             FindViewById<Button>(Resource.Id.stepContinueButton).Click -= StepContinueButton_Click;
         }
 
-        void PreviousStepButton_Click(object sender, EventArgs e)
+        private void PreviousStepButton_Click(object sender, EventArgs e)
         {
             if (currentStep > 0)
             {
@@ -64,7 +63,7 @@ namespace TimerApp
             }
         }
 
-        void PauseStepTimerButton_Click(object sender, EventArgs e)
+        private void PauseStepTimerButton_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException();
         }
@@ -77,12 +76,12 @@ namespace TimerApp
             }
         }
 
-        void NextStepButton_Click(object sender, EventArgs e)
+        private void NextStepButton_Click(object sender, EventArgs e)
         {
             LoadNextStep();
         }
 
-        void StepContinueButton_Click(object sender, EventArgs e)
+        private void StepContinueButton_Click(object sender, EventArgs e)
         {
             LoadNextStep();
         }
