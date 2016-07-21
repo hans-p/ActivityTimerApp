@@ -13,9 +13,9 @@ namespace TimerApp.Model
                 Description = "description of the recipe",
                 Time = new TimeSpan(1, 2, 3),
                 Steps = new List<Step> {
-                    new Step() { Instruction = "initial step", Time = new TimeSpan(0, 0, 30), ContinuationMode = ContinuationMode.Automatic  },
-                    new Step() { Instruction = "second step", Time = new TimeSpan(0, 0, 15), ContinuationMode = ContinuationMode.Automatic  },
-                    new Step() { Instruction = "final step", Time = new TimeSpan(0, 0, 0), ContinuationMode = ContinuationMode.Manual }
+                    new Step() { Title = "1", Instruction = "initial step", Time = new TimeSpan(0, 0, 30), ContinuationMode = ContinuationMode.Automatic  },
+                    new Step() { Title = "2", Instruction = "second step", Time = new TimeSpan(0, 0, 15), ContinuationMode = ContinuationMode.Automatic  },
+                    new Step() { Title = "3", Instruction = "final step", Time = new TimeSpan(0, 0, 0), ContinuationMode = ContinuationMode.Manual }
                 }
             },
             new Recipe()
@@ -25,9 +25,9 @@ namespace TimerApp.Model
                 Description = "description of the abc def",
                 Time = new TimeSpan(1, 2, 3),
                 Steps = new List<Step> {
-                    new Step() { Instruction = "aaaaaaaaaaaaaaa", Time = new TimeSpan(0, 1, 30), ContinuationMode = ContinuationMode.Automatic  },
-                    new Step() { Instruction = "bbbbbbbbbbbbbbb", Time = new TimeSpan(0, 1, 15), ContinuationMode = ContinuationMode.Automatic  },
-                    new Step() { Instruction = "ccccccccccccccc", Time = new TimeSpan(0, 0, 0), ContinuationMode = ContinuationMode.Manual }
+                    new Step() { Title = "111", Instruction = "aaaaaaaaaaaaaaa", Time = new TimeSpan(0, 1, 30), ContinuationMode = ContinuationMode.Automatic  },
+                    new Step() { Title = "222", Instruction = "bbbbbbbbbbbbbbb", Time = new TimeSpan(0, 1, 15), ContinuationMode = ContinuationMode.Automatic  },
+                    new Step() { Title = "333", Instruction = "ccccccccccccccc", Time = new TimeSpan(0, 0, 0), ContinuationMode = ContinuationMode.Manual }
                 }
             },
         };

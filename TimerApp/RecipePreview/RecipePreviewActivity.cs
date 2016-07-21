@@ -1,13 +1,16 @@
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Widget;
 using TimerApp.Model;
+using TimerApp.RecipeTimer;
 
 namespace TimerApp.RecipePreview
 {
     [Activity(Label = "RecipePreviewActivity")]
     public class RecipePreviewActivity : Activity
     {
+        StepAdapter stepAdapter;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -20,6 +23,12 @@ namespace TimerApp.RecipePreview
             FindViewById<TextView>(Resource.Id.descriptionTextView).Text = recipe.Description;
             FindViewById<TextView>(Resource.Id.timeTextView).Text = recipe.Time.ToString("hh\\:mm\\:ss");
             FindViewById<TextView>(Resource.Id.categoriesTextView).Text = string.Join(", ", recipe.Categories);
+
+            stepAdapter = new StepAdapter(this);
+            stepAdapter.AddRange(recipe.Steps);
+
+            var listView = FindViewById<ListView>(Resource.Id.stepListView);
+            listView.Adapter = stepAdapter;
         }
 
         protected override void OnResume()
@@ -38,7 +47,12 @@ namespace TimerApp.RecipePreview
 
         private void StartRecipeButton_Click(object sender, System.EventArgs e)
         {
-            throw new System.NotImplementedException();
+            if (!IsFinishing)
+            {
+                var intent = new Intent(this, typeof(TimerActivity));
+                intent.PutExtra("RecipeId", Intent.GetIntExtra("RecipeId", 0));
+                StartActivity(intent);
+            }
         }
     }
 }

@@ -54,8 +54,10 @@
     <Compile Include="Model\Recipes.cs" />
     <Compile Include="Model\Step.cs" />
     <Compile Include="RecipePreview\RecipePreviewActivity.cs" />
+    <Compile Include="RecipePreview\StepAdapter.cs" />
     <Compile Include="RecipeSelect\RecipeAdapter.cs" />
     <Compile Include="RecipeSelect\RecipeSelectActivity.cs" />
+    <Compile Include="RecipeTimer\TimerActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -81,6 +83,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\RecipeListAdapterView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\StepListAdapterView.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
