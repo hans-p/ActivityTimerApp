@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainActivity.cs" />
     <Compile Include="Model\Recipe.cs" />
     <Compile Include="Model\Recipes.cs" />
     <Compile Include="Model\Step.cs" />
