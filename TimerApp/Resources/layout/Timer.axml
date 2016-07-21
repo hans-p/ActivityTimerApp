@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:id="@+id/textView1" />
+        android:id="@+id/stepInstructionTextView" />
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -21,21 +21,21 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textSize="24sp"
-            android:id="@+id/button1" />
+            android:id="@+id/previousStepButton" />
         <Button
             android:text="||"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textSize="24sp"
-            android:id="@+id/button2" />
+            android:id="@+id/pauseStepTimerButton" />
         <Button
             android:text="&gt;|"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textSize="24sp"
-            android:id="@+id/button3" />
+            android:id="@+id/nextStepButton" />
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
@@ -43,11 +43,11 @@
         android:layout_weight="2"
         android:gravity="center"
         android:textSize="30sp"
-        android:id="@+id/textView2" />
+        android:id="@+id/stepTimeTextView" />
     <Button
         android:text="Continue"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="2"
-        android:id="@+id/button4" />
+        android:id="@+id/stepContinueButton" />
 </LinearLayout>
