@@ -16,14 +16,13 @@ namespace TimerApp.RecipeTimer
     [Activity(Label = "TimerActivity")]
     public class TimerActivity : Activity
     {
-        Recipe recipe;
-        int currentStep;
+        Session session;
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
-            recipe = Recipes.RecipeList[Intent.GetIntExtra("RecipeId", 0)];
+            session = Recipes.SessionList[Intent.GetIntExtra("SessionId", 0)];
             SetContentView(Resource.Layout.Timer);
         }
 
@@ -31,7 +30,7 @@ namespace TimerApp.RecipeTimer
         {
             base.OnResume();
 
-            loadStep(currentStep);
+            loadStep(session.CurrentStep);
 
             FindViewById<Button>(Resource.Id.previousStepButton).Click += PreviousStepButton_Click;
             FindViewById<Button>(Resource.Id.pauseStepTimerButton).Click += PauseStepTimerButton_Click;
@@ -51,9 +50,9 @@ namespace TimerApp.RecipeTimer
 
         private void PreviousStepButton_Click(object sender, EventArgs e)
         {
-            if (currentStep > 0)
+            if (session.CanLoadPreviousStep)
             {
-                loadStep(currentStep - 1);
+                loadStep(session.GetPrevStep());
             }
         }
 
@@ -64,9 +63,9 @@ namespace TimerApp.RecipeTimer
 
         void LoadNextStep()
         {
-            if (currentStep < (recipe.Steps.Count - 1))
+            if (session.CanLoadNextStep)
             {
-                loadStep(currentStep + 1);
+                loadStep(session.GetNextStep());
             }
         }
 
@@ -80,16 +79,14 @@ namespace TimerApp.RecipeTimer
             LoadNextStep();
         }
 
-        void loadStep(int atIndex)
+        void loadStep(Step step)
         {
-            currentStep = atIndex;
-            var step = recipe.Steps[atIndex];
             FindViewById<TextView>(Resource.Id.stepInstructionTextView).Text = step.Instruction;
             FindViewById<TextView>(Resource.Id.stepTimeTextView).Text = step.Time.ToString("hh\\:mm\\:ss");
             FindViewById<Button>(Resource.Id.stepContinueButton).Enabled = step.ContinuationMode == ContinuationMode.Manual;
-            FindViewById<Button>(Resource.Id.previousStepButton).Enabled = currentStep > 0;
+            FindViewById<Button>(Resource.Id.previousStepButton).Enabled = session.CanLoadPreviousStep;
             FindViewById<Button>(Resource.Id.pauseStepTimerButton).Enabled = step.Time.TotalSeconds > 0;
-            FindViewById<Button>(Resource.Id.nextStepButton).Enabled = currentStep < (recipe.Steps.Count - 1);
+            FindViewById<Button>(Resource.Id.nextStepButton).Enabled = session.CanLoadNextStep;
         }
     }
 }

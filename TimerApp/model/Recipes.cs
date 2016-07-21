@@ -31,5 +31,7 @@ namespace TimerApp.Model
                 }
             },
         };
+
+        public static List<Session> SessionList { get; set; } = new List<Session>();
     }
 }

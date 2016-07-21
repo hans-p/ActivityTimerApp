@@ -30,8 +30,12 @@ namespace TimerApp.RecipeSelect
         {
             if (!IsFinishing)
             {
+                var session = new Session(recipeAdapter.GetItem(position));
+                Recipes.SessionList.Add(session);
+                var sessionPosition = Recipes.SessionList.IndexOf(session);
+
                 var intent = new Intent(this, typeof(RecipePreviewActivity));
-                intent.PutExtra("RecipeId", position);
+                intent.PutExtra("SessionId", sessionPosition);
                 StartActivity(intent);
             }
         }

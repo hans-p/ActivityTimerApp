@@ -17,15 +17,15 @@ namespace TimerApp.RecipePreview
 
             SetContentView(Resource.Layout.Recipe);
 
-            var recipe = Recipes.RecipeList[Intent.GetIntExtra("RecipeId", 0)];
+            var session = Recipes.SessionList[Intent.GetIntExtra("SessionId", 0)];
 
-            FindViewById<TextView>(Resource.Id.titleTextView).Text = recipe.Title;
-            FindViewById<TextView>(Resource.Id.descriptionTextView).Text = recipe.Description;
-            FindViewById<TextView>(Resource.Id.timeTextView).Text = recipe.Time.ToString("hh\\:mm\\:ss");
-            FindViewById<TextView>(Resource.Id.categoriesTextView).Text = string.Join(", ", recipe.Categories);
+            FindViewById<TextView>(Resource.Id.titleTextView).Text = session.Recipe.Title;
+            FindViewById<TextView>(Resource.Id.descriptionTextView).Text = session.Recipe.Description;
+            FindViewById<TextView>(Resource.Id.timeTextView).Text = session.Recipe.Time.ToString("hh\\:mm\\:ss");
+            FindViewById<TextView>(Resource.Id.categoriesTextView).Text = string.Join(", ", session.Recipe.Categories);
 
             stepAdapter = new StepAdapter(this);
-            stepAdapter.AddRange(recipe.Steps);
+            stepAdapter.AddRange(session.Recipe.Steps);
 
             var listView = FindViewById<ListView>(Resource.Id.stepListView);
             listView.Adapter = stepAdapter;
@@ -50,7 +50,7 @@ namespace TimerApp.RecipePreview
             if (!IsFinishing)
             {
                 var intent = new Intent(this, typeof(TimerActivity));
-                intent.PutExtra("RecipeId", Intent.GetIntExtra("RecipeId", 0));
+                intent.PutExtra("SessionId", Intent.GetIntExtra("SessionId", 0));
                 StartActivity(intent);
             }
         }
