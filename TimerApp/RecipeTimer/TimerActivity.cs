@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using TimerApp.Model;
+using System.Timers;
 
 namespace TimerApp.RecipeTimer
 {
@@ -17,6 +18,7 @@ namespace TimerApp.RecipeTimer
     public class TimerActivity : Activity
     {
         Session session;
+        Timer timer;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -30,7 +32,14 @@ namespace TimerApp.RecipeTimer
         {
             base.OnResume();
 
-            loadStep(session.CurrentStep);
+            if (session.CurrentStepStart == default(DateTime))
+            {
+                updateViewWithStep(session.StartCurrentStep());
+            }
+            else
+            {
+                updateViewWithStep(session.CurrentStep);
+            }
 
             FindViewById<Button>(Resource.Id.previousStepButton).Click += PreviousStepButton_Click;
             FindViewById<Button>(Resource.Id.pauseStepTimerButton).Click += PauseStepTimerButton_Click;
@@ -52,7 +61,7 @@ namespace TimerApp.RecipeTimer
         {
             if (session.CanLoadPreviousStep)
             {
-                loadStep(session.GetPrevStep());
+                updateViewWithStep(session.StartPrevStep());
             }
         }
 
@@ -65,7 +74,7 @@ namespace TimerApp.RecipeTimer
         {
             if (session.CanLoadNextStep)
             {
-                loadStep(session.GetNextStep());
+                updateViewWithStep(session.StartNextStep());
             }
         }
 
@@ -79,14 +88,67 @@ namespace TimerApp.RecipeTimer
             LoadNextStep();
         }
 
-        void loadStep(Step step)
+        void updateViewWithStep(Step step)
         {
-            FindViewById<TextView>(Resource.Id.stepInstructionTextView).Text = step.Instruction;
-            FindViewById<TextView>(Resource.Id.stepTimeTextView).Text = step.Time.ToString("hh\\:mm\\:ss");
-            FindViewById<Button>(Resource.Id.stepContinueButton).Enabled = step.ContinuationMode == ContinuationMode.Manual;
-            FindViewById<Button>(Resource.Id.previousStepButton).Enabled = session.CanLoadPreviousStep;
-            FindViewById<Button>(Resource.Id.pauseStepTimerButton).Enabled = step.Time.TotalSeconds > 0;
-            FindViewById<Button>(Resource.Id.nextStepButton).Enabled = session.CanLoadNextStep;
+            if (session.CurrentStep.IsTimed)
+            {
+                startTimer();
+            }
+            else
+            {
+                stopTimer();
+            }
+
+            RunOnUiThread(() =>
+            {
+                FindViewById<TextView>(Resource.Id.stepInstructionTextView).Text = step.Instruction;
+                FindViewById<TextView>(Resource.Id.stepTimeTextView).Text = session.RemainingStepTime.ToString("hh\\:mm\\:ss"); //step.Time.ToString("hh\\:mm\\:ss");
+                FindViewById<Button>(Resource.Id.stepContinueButton).Enabled = step.ContinuationMode == ContinuationMode.Manual;
+                FindViewById<Button>(Resource.Id.previousStepButton).Enabled = session.CanLoadPreviousStep;
+                FindViewById<Button>(Resource.Id.pauseStepTimerButton).Enabled = step.Time.TotalSeconds > 0;
+                FindViewById<Button>(Resource.Id.nextStepButton).Enabled = session.CanLoadNextStep;
+            });
+        }
+
+        void stopTimer()
+        {
+            if (timer != null)
+            {
+                timer.Stop();
+                timer.Dispose();
+            }
+        }
+
+        void startTimer()
+        {
+            stopTimer();
+            timer = new Timer();
+            timer.Interval = 500;
+            timer.Elapsed += Timer_Elapsed;
+            timer.Start();
+        }
+
+        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            if (session.CanUpdateTimer)
+            {
+                RunOnUiThread(() =>
+                {
+                    FindViewById<TextView>(Resource.Id.stepTimeTextView).Text = session.RemainingStepTime.ToString("hh\\:mm\\:ss");
+                });
+            }
+            else
+            {
+                if (session.CurrentStep.ContinuationMode == ContinuationMode.Automatic)
+                {
+                    LoadNextStep();
+                }
+                else
+                {
+                    stopTimer();
+                    //todo notify user timer finished
+                }
+            }
         }
     }
 }

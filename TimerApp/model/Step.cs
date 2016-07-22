@@ -14,5 +14,7 @@ namespace TimerApp.Model
         public string Instruction { get; set; }
         public TimeSpan Time { get; set; }
         public ContinuationMode ContinuationMode { get; set; }
+
+        public bool IsTimed { get { return Time.TotalMilliseconds > 0; } }
     }
 }
