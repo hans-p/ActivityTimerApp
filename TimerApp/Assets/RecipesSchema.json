@@ -1,0 +1,64 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "Recipes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Title": {
+            "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          },
+          "Time": {
+            "type": "string"
+          },
+          "Categories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "Steps": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "Title": {
+                  "type": "string"
+                },
+                "Instruction": {
+                  "type": "string"
+                },
+                "Time": {
+                  "type": "string"
+                },
+                "ContinuationMode": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "Title",
+                "Time",
+                "ContinuationMode"
+              ]
+            }
+          }
+        },
+        "required": [
+          "Title",
+          "Description",
+          "Time",
+          "Categories",
+          "Steps"
+        ]
+      }
+    }
+  },
+  "required": [
+    "Recipes"
+  ]
+}

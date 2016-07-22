@@ -1,0 +1,177 @@
+﻿{
+  "Recipes": [
+    {
+      "Categories": [ "cooking", "cakes" ],
+      "Description": "1/2 cup brown sugar.\n1 egg. 1/2 cup lard.\n2 large cups flour.\n1/2 cup New Orleans molasses.\n1 tablespoonful of ginger.\n1 teaspoonful soda dissolved in half cup luke-warm water.",
+      "Steps": [
+        {
+          "Title": "Preparation",
+          "Instruction": "Beat sugar and lard to a cream, then beat in the yolk of egg, molasses and flour and soda dissolved in water. Lastly, add the stiffly-beaten white of egg.",
+          "Time": "00:00:00",
+          "ContinuationMode": "Manual"
+        },
+        {
+          "Title": "Baking",
+          "Instruction": "Bake 45 minutes in hot oven.",
+          "ContinuationMode": "Automatic",
+          "Time": "00:45:00"
+        }
+      ],
+      "Time": "00:50:00",
+      "Title": "GINGER CAKE"
+    },
+    {
+      "Categories": [ "cooking", "cakes" ],
+      "Description": "1/2 cup molasses.\n1 cup sugar.\n1/2 cup thick sour cream.\n1/2 cup sour milk.\n1/2 cup finely chopped peanuts.\n1 egg.\n1 teaspoonful soda dissolved in little hot water.\n2 3/4 cups flour.\n1 cup seeded raisins.",
+      "Steps": [
+        {
+          "Title": "Preparation",
+          "Instruction": "Mix together like ordinary cake.",
+          "Time": "00:00:00",
+          "ContinuationMode": "Manual"
+        },
+        {
+          "Title": "Baking",
+          "Instruction": "Bake in a fruit cake pan in a slow oven about forty minutes. This excellent cake requires no shortening, as cream is used.",
+          "ContinuationMode": "Automatic",
+          "Time": "00:40:00"
+        }
+      ],
+      "Time": "00:45:00",
+      "Title": "\"SOUR CREAM\" MOLASSES CAKE"
+    },
+    {
+      "Categories": [ "exercise" ],
+      "Description": "The 7-Minute Workout",
+      "Steps": [
+        {
+          "Title": "Get ready",
+          "Time": "00:00:10",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "Jumping jacks",
+          "Time": "00:00:30",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "Rest",
+          "Time": "00:00:10",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "Wall sit",
+          "Time": "00:00:30",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "Rest",
+          "Time": "00:00:10",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "Push-up",
+          "Time": "00:00:30",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "Rest",
+          "Time": "00:00:10",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "Abdominal crunch",
+          "Time": "00:00:30",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "Rest",
+          "Time": "00:00:10",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "Step-up onto chair",
+          "Time": "00:00:30",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "Rest",
+          "Time": "00:00:10",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "Squat",
+          "Time": "00:00:30",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "Rest",
+          "Time": "00:00:10",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "Triceps dip on chair",
+          "Time": "00:00:30",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "Rest",
+          "Time": "00:00:10",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "Plank",
+          "Time": "00:00:30",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "Rest",
+          "Time": "00:00:10",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "High knees running in place",
+          "Time": "00:00:30",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "Rest",
+          "Time": "00:00:10",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "Lunge",
+          "Time": "00:00:30",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "Rest",
+          "Time": "00:00:10",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "Push-up and rotation",
+          "Time": "00:00:30",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "Rest",
+          "Time": "00:00:10",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "Side plank",
+          "Time": "00:00:30",
+          "ContinuationMode": "Automatic"
+        },
+        {
+          "Title": "Rest",
+          "Time": "00:00:10",
+          "ContinuationMode": "Automatic"
+        }
+      ],
+      "Time": "00:7:00",
+      "Title": "The 7-Minute Workout"
+    }
+  ]
+}

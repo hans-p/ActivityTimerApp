@@ -16,5 +16,6 @@ namespace TimerApp.Model
         public ContinuationMode ContinuationMode { get; set; }
 
         public bool IsTimed { get { return Time.TotalMilliseconds > 0; } }
+        public bool IsTitleOnly { get { return string.IsNullOrWhiteSpace(Instruction); } }
     }
 }

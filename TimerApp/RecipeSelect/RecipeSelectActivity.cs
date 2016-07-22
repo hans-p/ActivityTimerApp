@@ -3,6 +3,10 @@ using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.IO;
 using TimerApp.Model;
 using TimerApp.RecipePreview;
 
@@ -19,7 +23,7 @@ namespace TimerApp.RecipeSelect
             SetContentView(Resource.Layout.RecipeList);
 
             recipeAdapter = new RecipeAdapter(this);
-            recipeAdapter.AddRange(Recipes.RecipeList);
+            loadRecipes();
 
             var listView = FindViewById<ListView>(Resource.Id.recipeListView);
             listView.Adapter = recipeAdapter;
@@ -38,6 +42,19 @@ namespace TimerApp.RecipeSelect
                 intent.PutExtra("SessionId", sessionPosition);
                 StartActivity(intent);
             }
+        }
+
+        async void loadRecipes()
+        {
+            string content;
+            using (var s = new StreamReader(Assets.Open("DefaultRecipes.json")))
+            {
+                content = await s.ReadToEndAsync();
+            }
+            var json = (JArray)JObject.Parse(content).GetValue("Recipes");
+            var recipes = json.ToObject<List<Recipe>>();
+            Recipes.RecipeList.AddRange(recipes);
+            recipeAdapter.AddRange(Recipes.RecipeList);
         }
     }
 }

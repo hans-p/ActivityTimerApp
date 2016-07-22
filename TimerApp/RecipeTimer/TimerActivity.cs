@@ -101,11 +101,11 @@ namespace TimerApp.RecipeTimer
 
             RunOnUiThread(() =>
             {
-                FindViewById<TextView>(Resource.Id.stepInstructionTextView).Text = step.Instruction;
-                FindViewById<TextView>(Resource.Id.stepTimeTextView).Text = session.RemainingStepTime.ToString("hh\\:mm\\:ss"); //step.Time.ToString("hh\\:mm\\:ss");
+                FindViewById<TextView>(Resource.Id.stepInstructionTextView).Text = step.IsTitleOnly ? step.Title : step.Instruction;
+                FindViewById<TextView>(Resource.Id.stepTimeTextView).Text = step.IsTimed ? session.RemainingStepTime.ToString("hh\\:mm\\:ss") : "";
                 FindViewById<Button>(Resource.Id.stepContinueButton).Enabled = step.ContinuationMode == ContinuationMode.Manual;
                 FindViewById<Button>(Resource.Id.previousStepButton).Enabled = session.CanLoadPreviousStep;
-                FindViewById<Button>(Resource.Id.pauseStepTimerButton).Enabled = step.Time.TotalSeconds > 0;
+                FindViewById<Button>(Resource.Id.pauseStepTimerButton).Enabled = step.IsTimed;
                 FindViewById<Button>(Resource.Id.nextStepButton).Enabled = session.CanLoadNextStep;
             });
         }
