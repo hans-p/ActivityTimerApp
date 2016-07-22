@@ -2,7 +2,7 @@ using System;
 
 namespace TimerApp.Model
 {
-    class Session
+    public class Session
     {
         public Recipe Recipe { get; set; }
         public DateTime SessionStart { get; set; }

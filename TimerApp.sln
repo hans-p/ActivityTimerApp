@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimerApp", "TimerApp\TimerApp.csproj", "{22FCDBAF-3310-47BF-8926-968D0FD87D30}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimerAppUnitTest", "TimerAppUnitTest\TimerAppUnitTest.csproj", "{AFB464CD-1DEB-4B3C-8589-870D20721D58}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,12 @@ Global
 		{22FCDBAF-3310-47BF-8926-968D0FD87D30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22FCDBAF-3310-47BF-8926-968D0FD87D30}.Release|Any CPU.Build.0 = Release|Any CPU
 		{22FCDBAF-3310-47BF-8926-968D0FD87D30}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{AFB464CD-1DEB-4B3C-8589-870D20721D58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFB464CD-1DEB-4B3C-8589-870D20721D58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFB464CD-1DEB-4B3C-8589-870D20721D58}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{AFB464CD-1DEB-4B3C-8589-870D20721D58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFB464CD-1DEB-4B3C-8589-870D20721D58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFB464CD-1DEB-4B3C-8589-870D20721D58}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

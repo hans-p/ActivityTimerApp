@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TimerApp.Model
 {
-    class Recipe
+    public class Recipe
     {
         public string Title { get; set; }
         public string Description { get; set; }

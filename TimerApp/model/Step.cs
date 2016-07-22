@@ -2,13 +2,13 @@ using System;
 
 namespace TimerApp.Model
 {
-    enum ContinuationMode
+    public enum ContinuationMode
     {
         Automatic,
         Manual
     }
 
-    class Step
+    public class Step
     {
         public string Title { get; set; }
         public string Instruction { get; set; }
