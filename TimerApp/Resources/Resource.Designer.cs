@@ -66,9 +66,6 @@ namespace TimerApp
 			// aapt resource value: 0x7f050002
 			public const int descriptionTextView = 2131034114;
 			
-			// aapt resource value: 0x7f050008
-			public const int linearLayout1 = 2131034120;
-			
 			// aapt resource value: 0x7f05000b
 			public const int nextStepButton = 2131034123;
 			
@@ -79,7 +76,10 @@ namespace TimerApp
 			public const int previousStepButton = 2131034121;
 			
 			// aapt resource value: 0x7f050006
-			public const int recipeListView = 2131034118;
+			public const int recipeListFilterTextView = 2131034118;
+			
+			// aapt resource value: 0x7f050007
+			public const int recipeListView = 2131034119;
 			
 			// aapt resource value: 0x7f050000
 			public const int startRecipeButton = 2131034112;
@@ -87,8 +87,8 @@ namespace TimerApp
 			// aapt resource value: 0x7f05000d
 			public const int stepContinueButton = 2131034125;
 			
-			// aapt resource value: 0x7f050007
-			public const int stepInstructionTextView = 2131034119;
+			// aapt resource value: 0x7f050008
+			public const int stepInstructionTextView = 2131034120;
 			
 			// aapt resource value: 0x7f050005
 			public const int stepListView = 2131034117;

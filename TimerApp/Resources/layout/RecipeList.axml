@@ -3,9 +3,19 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recipeListView" />
+    android:padding="16dp"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true">
+  <MultiAutoCompleteTextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:lines="1"
+      android:inputType="text"
+      android:hint="Filter timers by categories"
+      android:id="@+id/recipeListFilterTextView"/>
+  <ListView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_weight="1"
+      android:id="@+id/recipeListView"/>
 </LinearLayout>

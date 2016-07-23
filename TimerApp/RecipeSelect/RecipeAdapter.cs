@@ -4,20 +4,34 @@ using Android.Views;
 using Android.Widget;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TimerApp.Model;
-using Java.Lang;
 
 namespace TimerApp.RecipeSelect
 {
     class RecipeAdapter : BaseAdapter<Recipe>
     {
         Context Context;
-        List<Recipe> recipes;
+        List<Recipe> recipes = new List<Recipe>();
+        List<string> filters = new List<string>();
+        List<Recipe> filteredRecipes
+        {
+            get
+            {
+                if (filters.Count > 0)
+                {
+                    // take recipes where any filter entry is contained in the category entry
+                    return recipes
+                        .Where(r => r.Categories.Any(c => filters.Any(f => c.Contains(f))))
+                        .ToList();
+                }
+                return recipes;
+            }
+        }
 
         public RecipeAdapter(Context context)
         {
             Context = context;
-            recipes = new List<Recipe>();
         }
 
         public RecipeAdapter(IntPtr handle, JniHandleOwnership transfer) : base(handle, transfer)
@@ -28,7 +42,7 @@ namespace TimerApp.RecipeSelect
         {
             get
             {
-                return recipes[position];
+                return filteredRecipes[position];
             }
         }
 
@@ -36,7 +50,7 @@ namespace TimerApp.RecipeSelect
         {
             get
             {
-                return recipes.Count;
+                return filteredRecipes.Count;
             }
         }
 
@@ -58,7 +72,7 @@ namespace TimerApp.RecipeSelect
 
         new public Recipe GetItem(int position)
         {
-            return recipes[position];
+            return filteredRecipes[position];
         }
 
         public void Add(Recipe recipe)
@@ -67,8 +81,9 @@ namespace TimerApp.RecipeSelect
             NotifyDataSetChanged();
         }
 
-        public void AddRange(IList<Recipe> recipes)
+        public void UpdateRecipes(IList<Recipe> recipes)
         {
+            this.recipes.Clear();
             this.recipes.AddRange(recipes);
             NotifyDataSetChanged();
         }
@@ -80,6 +95,13 @@ namespace TimerApp.RecipeSelect
                 recipes.Remove(recipe);
                 NotifyDataSetChanged();
             }
+        }
+
+        public void UpdateFilters(IList<string> filters)
+        {
+            this.filters.Clear();
+            this.filters.AddRange(filters);
+            NotifyDataSetChanged();
         }
     }
 }

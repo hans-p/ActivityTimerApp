@@ -60,6 +60,7 @@
     <Compile Include="RecipePreview\RecipePreviewActivity.cs" />
     <Compile Include="RecipePreview\StepAdapter.cs" />
     <Compile Include="RecipeSelect\RecipeAdapter.cs" />
+    <Compile Include="RecipeSelect\RecipeFilterAutocompleteAdapter.cs" />
     <Compile Include="RecipeSelect\RecipeSelectActivity.cs" />
     <Compile Include="RecipeTimer\TimerActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
