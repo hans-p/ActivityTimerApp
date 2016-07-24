@@ -1,6 +1,7 @@
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Support.V7.App;
 using Android.Widget;
 using TimerApp.Model;
 using TimerApp.RecipeTimer;
@@ -8,7 +9,7 @@ using TimerApp.RecipeTimer;
 namespace TimerApp.RecipePreview
 {
     [Activity(Label = "RecipePreviewActivity")]
-    public class RecipePreviewActivity : Activity
+    public class RecipePreviewActivity : AppCompatActivity
     {
         StepAdapter stepAdapter;
         protected override void OnCreate(Bundle savedInstanceState)

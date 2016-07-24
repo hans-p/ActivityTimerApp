@@ -1,9 +1,9 @@
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ using TimerApp.RecipePreview;
 namespace TimerApp.RecipeSelect
 {
     [Activity(Label = "RecipeSelectActivity", MainLauncher = true)]
-    public class RecipeSelectActivity : Activity, AdapterView.IOnItemClickListener
+    public class RecipeSelectActivity : AppCompatActivity, AdapterView.IOnItemClickListener
     {
         RecipeAdapter recipeAdapter;
         RecipeFilterAutocompleteAdapter recipeFilterAutocompleteAdapter;
@@ -91,6 +91,7 @@ namespace TimerApp.RecipeSelect
             }
             var json = (JArray)JObject.Parse(content).GetValue("Recipes");
             var recipes = json.ToObject<List<Recipe>>();
+            Recipes.RecipeList.Clear();
             Recipes.RecipeList.AddRange(recipes);
             recipeAdapter.UpdateRecipes(Recipes.RecipeList);
             recipeFilterAutocompleteAdapter.Update(Recipes.Categories);
