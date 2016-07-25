@@ -20,9 +20,9 @@ namespace TimerApp.RecipeSelect
             {
                 if (filters.Count > 0)
                 {
-                    // take recipes where any filter entry is contained in the category entry
+                    // take recipes where all filters match the recipe categories
                     return recipes
-                        .Where(r => r.Categories.Any(c => filters.Any(f => c.Contains(f))))
+                        .Where(r => filters.All(f => r.Categories.Any(c => c.Contains(f))))
                         .ToList();
                 }
                 return recipes;
@@ -66,6 +66,7 @@ namespace TimerApp.RecipeSelect
                 convertView = View.Inflate(Context, Resource.Layout.RecipeListAdapterView, null);
             }
             convertView.FindViewById<TextView>(Resource.Id.titleTextView).Text = GetItem(position).Title;
+            convertView.FindViewById<TextView>(Resource.Id.timeTextView).Text = GetItem(position).Time.ToString("hh\\:mm\\:ss");
 
             return convertView;
         }

@@ -14,7 +14,7 @@ using TimerApp.RecipePreview;
 
 namespace TimerApp.RecipeSelect
 {
-    [Activity(Label = "RecipeSelectActivity", MainLauncher = true)]
+    [Activity(Label = "@string/RecipeSelectActivity", MainLauncher = true)]
     public class RecipeSelectActivity : AppCompatActivity, AdapterView.IOnItemClickListener
     {
         RecipeAdapter recipeAdapter;
@@ -58,7 +58,8 @@ namespace TimerApp.RecipeSelect
         private void RecipeListFilterTextView_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
         {
             recipeAdapter.UpdateFilters(
-                e.Text.ToString().Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                e.Text.ToString()
+                .Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(x => x.Trim())
                 .Where(x => !string.IsNullOrWhiteSpace(x))
                 .ToList());
