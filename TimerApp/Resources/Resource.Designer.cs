@@ -1422,8 +1422,14 @@ namespace TimerApp
 			// aapt resource value: 0x7f020045
 			public const int Icon = 2130837573;
 			
+			// aapt resource value: 0x7f020048
+			public const int notification_template_icon_bg = 2130837576;
+			
 			// aapt resource value: 0x7f020046
-			public const int notification_template_icon_bg = 2130837574;
+			public const int SkipNext = 2130837574;
+			
+			// aapt resource value: 0x7f020047
+			public const int SkipPrev = 2130837575;
 			
 			static Drawable()
 			{
@@ -1438,8 +1444,8 @@ namespace TimerApp
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0b006a
-			public const int MenuRecipeStartItem = 2131427434;
+			// aapt resource value: 0x7f0b006d
+			public const int MenuRecipeStartItem = 2131427437;
 			
 			// aapt resource value: 0x7f0b0050
 			public const int action0 = 2131427408;
@@ -1594,8 +1600,20 @@ namespace TimerApp
 			// aapt resource value: 0x7f0b001e
 			public const int never = 2131427358;
 			
-			// aapt resource value: 0x7f0b0067
-			public const int nextStepButton = 2131427431;
+			// aapt resource value: 0x7f0b0069
+			public const int next0StepLabelTextView = 2131427433;
+			
+			// aapt resource value: 0x7f0b006a
+			public const int next0StepTextView = 2131427434;
+			
+			// aapt resource value: 0x7f0b006b
+			public const int next1StepLabelTextView = 2131427435;
+			
+			// aapt resource value: 0x7f0b006c
+			public const int next1StepTextView = 2131427436;
+			
+			// aapt resource value: 0x7f0b0068
+			public const int nextStepButton = 2131427432;
 			
 			// aapt resource value: 0x7f0b000e
 			public const int none = 2131427342;
@@ -1607,10 +1625,7 @@ namespace TimerApp
 			public const int parentPanel = 2131427373;
 			
 			// aapt resource value: 0x7f0b0066
-			public const int pauseStepTimerButton = 2131427430;
-			
-			// aapt resource value: 0x7f0b0065
-			public const int previousStepButton = 2131427429;
+			public const int previousStepButton = 2131427430;
 			
 			// aapt resource value: 0x7f0b0005
 			public const int progress_circular = 2131427333;
@@ -1702,17 +1717,17 @@ namespace TimerApp
 			// aapt resource value: 0x7f0b0052
 			public const int status_bar_latest_event_content = 2131427410;
 			
-			// aapt resource value: 0x7f0b0069
-			public const int stepContinueButton = 2131427433;
-			
-			// aapt resource value: 0x7f0b0064
-			public const int stepInstructionTextView = 2131427428;
+			// aapt resource value: 0x7f0b0065
+			public const int stepInstructionTextView = 2131427429;
 			
 			// aapt resource value: 0x7f0b0061
 			public const int stepListView = 2131427425;
 			
-			// aapt resource value: 0x7f0b0068
-			public const int stepTimeTextView = 2131427432;
+			// aapt resource value: 0x7f0b0067
+			public const int stepTimeTextView = 2131427431;
+			
+			// aapt resource value: 0x7f0b0064
+			public const int stepTitleTextView = 2131427428;
 			
 			// aapt resource value: 0x7f0b004c
 			public const int submit_area = 2131427404;

@@ -7,46 +7,80 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:textSize="40sp"
+        android:layout_weight="3"
+        android:layout_gravity="center"
+        android:id="@+id/stepTitleTextView" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="20sp"
+        android:layout_weight="2"
         android:id="@+id/stepInstructionTextView" />
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="2">
-        <Button
-            android:text="|&lt;"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="24sp"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/skipprev"
             android:id="@+id/previousStepButton" />
-        <Button
-            android:text="||"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="30sp"
             android:layout_weight="1"
-            android:textSize="24sp"
-            android:id="@+id/pauseStepTimerButton" />
-        <Button
-            android:text="&gt;|"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="24sp"
+            android:id="@+id/stepTimeTextView" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/skipnext"
             android:id="@+id/nextStepButton" />
     </LinearLayout>
-    <TextView
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:id="@+id/stepTimeTextView" />
-    <Button
-        android:text="Continue"
+        android:layout_weight="3"
+        android:padding="16dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_weight="3"
+            android:text="Next"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/next0StepLabelTextView" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/next0StepTextView" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:id="@+id/stepContinueButton" />
+        android:layout_weight="3"
+        android:padding="16dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_weight="3"
+            android:text="After that"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/next1StepLabelTextView" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/next1StepTextView" />
+    </LinearLayout>
 </LinearLayout>

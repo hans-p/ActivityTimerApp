@@ -10,5 +10,14 @@ namespace TimerApp.Model
         public TimeSpan Time { get; set; }
         public List<string> Categories { get; set; }
         public List<Step> Steps { get; set; }
+
+        public Step GetStepOrNull(int at)
+        {
+            if (at >= 0 && at < Steps.Count)
+            {
+                return Steps[at];
+            }
+            return null;
+        }
     }
 }

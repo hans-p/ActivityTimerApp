@@ -7,6 +7,7 @@ using System;
 using System.Timers;
 using TimerApp.Model;
 using Android.Views;
+using Android.Graphics;
 
 namespace TimerApp.RecipeTimer
 {
@@ -15,6 +16,9 @@ namespace TimerApp.RecipeTimer
     {
         Session session;
         Timer timer;
+        PorterDuffColorFilter buttonProceedFilter;
+        ImageButton previousStepButton, nextStepButton;
+        TextView stepTimeTextView, stepTitleTextView, stepInstructionTextView, next0StepLabelTextView, next0StepTextView, next1StepLabelTextView, next1StepTextView;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -25,6 +29,19 @@ namespace TimerApp.RecipeTimer
 
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             SupportActionBar.SetDisplayShowHomeEnabled(true);
+
+            var color = new Color((int)Build.VERSION.SdkInt < 23 ? Resources.GetColor(Resource.Color.colorAccent) : GetColor(Resource.Color.colorAccent));
+            buttonProceedFilter = new PorterDuffColorFilter(color, PorterDuff.Mode.SrcAtop);
+
+            previousStepButton = FindViewById<ImageButton>(Resource.Id.previousStepButton);
+            nextStepButton = FindViewById<ImageButton>(Resource.Id.nextStepButton);
+            stepTimeTextView = FindViewById<TextView>(Resource.Id.stepTimeTextView);
+            stepTitleTextView = FindViewById<TextView>(Resource.Id.stepTitleTextView);
+            stepInstructionTextView = FindViewById<TextView>(Resource.Id.stepInstructionTextView);
+            next0StepLabelTextView = FindViewById<TextView>(Resource.Id.next0StepLabelTextView);
+            next0StepTextView = FindViewById<TextView>(Resource.Id.next0StepTextView);
+            next1StepLabelTextView = FindViewById<TextView>(Resource.Id.next1StepLabelTextView);
+            next1StepTextView = FindViewById<TextView>(Resource.Id.next1StepTextView);
         }
 
         public override bool OnSupportNavigateUp()
@@ -60,18 +77,14 @@ namespace TimerApp.RecipeTimer
                 updateViewWithStep(session.CurrentStep);
             }
 
-            FindViewById<Button>(Resource.Id.previousStepButton).Click += PreviousStepButton_Click;
-            FindViewById<Button>(Resource.Id.pauseStepTimerButton).Click += PauseStepTimerButton_Click;
-            FindViewById<Button>(Resource.Id.nextStepButton).Click += NextStepButton_Click;
-            FindViewById<Button>(Resource.Id.stepContinueButton).Click += StepContinueButton_Click;
+            previousStepButton.Click += PreviousStepButton_Click;
+            nextStepButton.Click += NextStepButton_Click;
         }
 
         protected override void OnPause()
         {
-            FindViewById<Button>(Resource.Id.previousStepButton).Click -= PreviousStepButton_Click;
-            FindViewById<Button>(Resource.Id.pauseStepTimerButton).Click -= PauseStepTimerButton_Click;
-            FindViewById<Button>(Resource.Id.nextStepButton).Click -= NextStepButton_Click;
-            FindViewById<Button>(Resource.Id.stepContinueButton).Click -= StepContinueButton_Click;
+            previousStepButton.Click -= PreviousStepButton_Click;
+            nextStepButton.Click -= NextStepButton_Click;
 
             stopTimer();
 
@@ -86,11 +99,6 @@ namespace TimerApp.RecipeTimer
             }
         }
 
-        private void PauseStepTimerButton_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         void LoadNextStep()
         {
             if (session.CanLoadNextStep)
@@ -100,11 +108,6 @@ namespace TimerApp.RecipeTimer
         }
 
         private void NextStepButton_Click(object sender, EventArgs e)
-        {
-            LoadNextStep();
-        }
-
-        private void StepContinueButton_Click(object sender, EventArgs e)
         {
             LoadNextStep();
         }
@@ -122,12 +125,25 @@ namespace TimerApp.RecipeTimer
 
             RunOnUiThread(() =>
             {
-                FindViewById<TextView>(Resource.Id.stepInstructionTextView).Text = step.IsTitleOnly ? step.Title : step.Instruction;
-                FindViewById<TextView>(Resource.Id.stepTimeTextView).Text = step.IsTimed ? session.RemainingStepTime.ToString("hh\\:mm\\:ss") : "";
-                FindViewById<Button>(Resource.Id.stepContinueButton).Enabled = step.ContinuationMode == ContinuationMode.Manual;
-                FindViewById<Button>(Resource.Id.previousStepButton).Enabled = session.CanLoadPreviousStep;
-                FindViewById<Button>(Resource.Id.pauseStepTimerButton).Enabled = step.IsTimed;
-                FindViewById<Button>(Resource.Id.nextStepButton).Enabled = session.CanLoadNextStep;
+                stepTitleTextView.Text = step.Title;
+                stepInstructionTextView.Text = step.Instruction;
+                stepTimeTextView.Text = step.IsTimed ? session.RemainingStepTime.ToString("hh\\:mm\\:ss") : "";
+                previousStepButton.Enabled = session.CanLoadPreviousStep;
+                nextStepButton.Enabled = session.CanLoadNextStep;
+                if (step.IsTimed)
+                {
+                    nextStepButton.ClearColorFilter();
+                }
+                else
+                {
+                    nextStepButton.SetColorFilter(buttonProceedFilter);
+                }
+                var next0 = session.Recipe.GetStepOrNull(session.CurrentStepIndex + 1);
+                var next1 = session.Recipe.GetStepOrNull(session.CurrentStepIndex + 2);
+                next0StepLabelTextView.Visibility = (next0 == null) ? ViewStates.Invisible : ViewStates.Visible;
+                next0StepTextView.Text = next0?.Title ?? "";
+                next1StepLabelTextView.Visibility = (next1 == null) ? ViewStates.Invisible : ViewStates.Visible;
+                next1StepTextView.Text = next1?.Title ?? "";
             });
         }
 
@@ -155,7 +171,7 @@ namespace TimerApp.RecipeTimer
             {
                 RunOnUiThread(() =>
                 {
-                    FindViewById<TextView>(Resource.Id.stepTimeTextView).Text = session.RemainingStepTime.ToString("hh\\:mm\\:ss");
+                    stepTimeTextView.Text = session.RemainingStepTime.ToString("hh\\:mm\\:ss");
                 });
             }
             else
@@ -167,6 +183,10 @@ namespace TimerApp.RecipeTimer
                 else
                 {
                     stopTimer();
+                    RunOnUiThread(() =>
+                    {
+                        nextStepButton.SetColorFilter(buttonProceedFilter);
+                    });
                     //todo notify user timer finished
                 }
             }
