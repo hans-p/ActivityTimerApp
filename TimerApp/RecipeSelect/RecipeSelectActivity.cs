@@ -76,7 +76,7 @@ namespace TimerApp.RecipeSelect
                 var sessionPosition = Recipes.SessionList.IndexOf(session);
 
                 var intent = new Intent(this, typeof(RecipePreviewActivity));
-                intent.PutExtra("SessionId", sessionPosition);
+                intent.PutExtra("RecipeId", Recipes.RecipeList.IndexOf(recipeAdapter.GetItem(position)));
                 StartActivity(intent);
             }
         }

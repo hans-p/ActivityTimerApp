@@ -12,6 +12,7 @@ namespace TimerApp.RecipePreview
     [Activity(Label = "RecipePreviewActivity")]
     public class RecipePreviewActivity : AppCompatActivity
     {
+        Recipe recipe;
         StepAdapter stepAdapter;
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -19,15 +20,15 @@ namespace TimerApp.RecipePreview
 
             SetContentView(Resource.Layout.Recipe);
 
-            var session = Recipes.SessionList[Intent.GetIntExtra("SessionId", 0)];
+            recipe = Recipes.RecipeList[Intent.GetIntExtra("RecipeId", 0)];
 
-            FindViewById<TextView>(Resource.Id.titleTextView).Text = session.Recipe.Title;
-            FindViewById<TextView>(Resource.Id.descriptionTextView).Text = session.Recipe.Description;
-            FindViewById<TextView>(Resource.Id.timeTextView).Text = session.Recipe.Time.ToString("hh\\:mm\\:ss");
-            FindViewById<TextView>(Resource.Id.categoriesTextView).Text = string.Join(", ", session.Recipe.Categories);
+            FindViewById<TextView>(Resource.Id.titleTextView).Text = recipe.Title;
+            FindViewById<TextView>(Resource.Id.descriptionTextView).Text = recipe.Description;
+            FindViewById<TextView>(Resource.Id.timeTextView).Text = recipe.Time.ToString("hh\\:mm\\:ss");
+            FindViewById<TextView>(Resource.Id.categoriesTextView).Text = string.Join(", ", recipe.Categories);
 
             stepAdapter = new StepAdapter(this);
-            stepAdapter.AddRange(session.Recipe.Steps);
+            stepAdapter.AddRange(recipe.Steps);
 
             var listView = FindViewById<ListView>(Resource.Id.stepListView);
             listView.Adapter = stepAdapter;
@@ -58,8 +59,12 @@ namespace TimerApp.RecipePreview
             {
                 if (!IsFinishing)
                 {
+                    var session = new Session(recipe);
+                    Recipes.SessionList.Add(session);
+                    var sessionPosition = Recipes.SessionList.IndexOf(session);
+
                     var intent = new Intent(this, typeof(TimerActivity));
-                    intent.PutExtra("SessionId", Intent.GetIntExtra("SessionId", 0));
+                    intent.PutExtra("SessionId", sessionPosition);
                     StartActivity(intent);
                 }
             }

@@ -37,6 +37,16 @@ namespace TimerApp.RecipeTimer
             return false;
         }
 
+        public override void Finish()
+        {
+            if (Recipes.SessionList.Contains(session))
+            {
+                Recipes.SessionList.Remove(session);
+            }
+
+            base.Finish();
+        }
+
         protected override void OnResume()
         {
             base.OnResume();
@@ -62,6 +72,8 @@ namespace TimerApp.RecipeTimer
             FindViewById<Button>(Resource.Id.pauseStepTimerButton).Click -= PauseStepTimerButton_Click;
             FindViewById<Button>(Resource.Id.nextStepButton).Click -= NextStepButton_Click;
             FindViewById<Button>(Resource.Id.stepContinueButton).Click -= StepContinueButton_Click;
+
+            stopTimer();
 
             base.OnPause();
         }
