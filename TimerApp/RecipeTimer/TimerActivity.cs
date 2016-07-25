@@ -6,6 +6,7 @@ using Android.Widget;
 using System;
 using System.Timers;
 using TimerApp.Model;
+using Android.Views;
 
 namespace TimerApp.RecipeTimer
 {
@@ -21,6 +22,19 @@ namespace TimerApp.RecipeTimer
 
             session = Recipes.SessionList[Intent.GetIntExtra("SessionId", 0)];
             SetContentView(Resource.Layout.Timer);
+
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            SupportActionBar.SetDisplayShowHomeEnabled(true);
+        }
+
+        public override bool OnSupportNavigateUp()
+        {
+            if (!IsFinishing)
+            {
+                Finish();
+                return true;
+            }
+            return false;
         }
 
         protected override void OnResume()

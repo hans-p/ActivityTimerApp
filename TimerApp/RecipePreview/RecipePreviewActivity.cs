@@ -30,6 +30,19 @@ namespace TimerApp.RecipePreview
 
             var listView = FindViewById<ListView>(Resource.Id.stepListView);
             listView.Adapter = stepAdapter;
+
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            SupportActionBar.SetDisplayShowHomeEnabled(true);
+        }
+
+        public override bool OnSupportNavigateUp()
+        {
+            if (!IsFinishing)
+            {
+                Finish();
+                return true;
+            }
+            return false;
         }
 
         protected override void OnResume()

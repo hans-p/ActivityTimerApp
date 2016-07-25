@@ -106,10 +106,11 @@
     <AndroidResource Include="Resources\layout\StepListAdapterView.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\menu\MenuRecipeSelect.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\menu\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <XamarinComponentReference Include="xamandroidsupportv4-18">
       <Visible>False</Visible>
