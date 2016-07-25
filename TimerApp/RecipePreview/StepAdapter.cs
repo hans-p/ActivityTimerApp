@@ -51,7 +51,9 @@ namespace TimerApp.RecipePreview
             {
                 convertView = View.Inflate(Context, Resource.Layout.StepListAdapterView, null);
             }
-            convertView.FindViewById<TextView>(Resource.Id.titleTextView).Text = GetItem(position).Title;
+            var step = GetItem(position);
+            convertView.FindViewById<TextView>(Resource.Id.titleTextView).Text = step.Title;
+            convertView.FindViewById<TextView>(Resource.Id.timeTextView).Text = step.IsTimed ? step.Time.ToString("hh\\:mm\\:ss") : "Untimed";
 
             return convertView;
         }

@@ -2,6 +2,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Support.V7.App;
+using Android.Views;
 using Android.Widget;
 using TimerApp.Model;
 using TimerApp.RecipeTimer;
@@ -45,28 +46,24 @@ namespace TimerApp.RecipePreview
             return false;
         }
 
-        protected override void OnResume()
+        public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            base.OnResume();
-
-            FindViewById<Button>(Resource.Id.startRecipeButton).Click += StartRecipeButton_Click;
+            MenuInflater.Inflate(Resource.Menu.MenuRecipe, menu);
+            return base.OnCreateOptionsMenu(menu);
         }
 
-        protected override void OnPause()
+        public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            FindViewById<Button>(Resource.Id.startRecipeButton).Click -= StartRecipeButton_Click;
-
-            base.OnPause();
-        }
-
-        private void StartRecipeButton_Click(object sender, System.EventArgs e)
-        {
-            if (!IsFinishing)
+            if (item.ItemId == Resource.Id.MenuRecipeStartItem)
             {
-                var intent = new Intent(this, typeof(TimerActivity));
-                intent.PutExtra("SessionId", Intent.GetIntExtra("SessionId", 0));
-                StartActivity(intent);
+                if (!IsFinishing)
+                {
+                    var intent = new Intent(this, typeof(TimerActivity));
+                    intent.PutExtra("SessionId", Intent.GetIntExtra("SessionId", 0));
+                    StartActivity(intent);
+                }
             }
+            return base.OnOptionsItemSelected(item);
         }
     }
 }

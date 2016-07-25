@@ -65,8 +65,9 @@ namespace TimerApp.RecipeSelect
             {
                 convertView = View.Inflate(Context, Resource.Layout.RecipeListAdapterView, null);
             }
-            convertView.FindViewById<TextView>(Resource.Id.titleTextView).Text = GetItem(position).Title;
-            convertView.FindViewById<TextView>(Resource.Id.timeTextView).Text = GetItem(position).Time.ToString("hh\\:mm\\:ss");
+            var recipe = GetItem(position);
+            convertView.FindViewById<TextView>(Resource.Id.titleTextView).Text = recipe.Title;
+            convertView.FindViewById<TextView>(Resource.Id.timeTextView).Text = recipe.Time.ToString("hh\\:mm\\:ss");
 
             return convertView;
         }

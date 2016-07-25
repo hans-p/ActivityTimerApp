@@ -106,7 +106,7 @@
     <AndroidResource Include="Resources\layout\StepListAdapterView.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\menu\MenuRecipeSelect.axml">
+    <AndroidResource Include="Resources\menu\MenuRecipe.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

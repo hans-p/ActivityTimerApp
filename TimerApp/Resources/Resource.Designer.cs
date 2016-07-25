@@ -1438,6 +1438,9 @@ namespace TimerApp
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f0b006a
+			public const int MenuRecipeStartItem = 2131427434;
+			
 			// aapt resource value: 0x7f0b0050
 			public const int action0 = 2131427408;
 			
@@ -1483,9 +1486,6 @@ namespace TimerApp
 			// aapt resource value: 0x7f0b0023
 			public const int action_mode_close_button = 2131427363;
 			
-			// aapt resource value: 0x7f0b006b
-			public const int action_settings = 2131427435;
-			
 			// aapt resource value: 0x7f0b0024
 			public const int activity_chooser_view_content = 2131427364;
 			
@@ -1504,8 +1504,8 @@ namespace TimerApp
 			// aapt resource value: 0x7f0b0051
 			public const int cancel_action = 2131427409;
 			
-			// aapt resource value: 0x7f0b0061
-			public const int categoriesTextView = 2131427425;
+			// aapt resource value: 0x7f0b005f
+			public const int categoriesTextView = 2131427423;
 			
 			// aapt resource value: 0x7f0b0039
 			public const int checkbox = 2131427385;
@@ -1531,8 +1531,8 @@ namespace TimerApp
 			// aapt resource value: 0x7f0b0027
 			public const int default_activity_button = 2131427367;
 			
-			// aapt resource value: 0x7f0b005f
-			public const int descriptionTextView = 2131427423;
+			// aapt resource value: 0x7f0b0060
+			public const int descriptionTextView = 2131427424;
 			
 			// aapt resource value: 0x7f0b000c
 			public const int disableHome = 2131427340;
@@ -1594,8 +1594,8 @@ namespace TimerApp
 			// aapt resource value: 0x7f0b001e
 			public const int never = 2131427358;
 			
-			// aapt resource value: 0x7f0b0068
-			public const int nextStepButton = 2131427432;
+			// aapt resource value: 0x7f0b0067
+			public const int nextStepButton = 2131427431;
 			
 			// aapt resource value: 0x7f0b000e
 			public const int none = 2131427342;
@@ -1606,11 +1606,11 @@ namespace TimerApp
 			// aapt resource value: 0x7f0b002d
 			public const int parentPanel = 2131427373;
 			
-			// aapt resource value: 0x7f0b0067
-			public const int pauseStepTimerButton = 2131427431;
-			
 			// aapt resource value: 0x7f0b0066
-			public const int previousStepButton = 2131427430;
+			public const int pauseStepTimerButton = 2131427430;
+			
+			// aapt resource value: 0x7f0b0065
+			public const int previousStepButton = 2131427429;
 			
 			// aapt resource value: 0x7f0b0005
 			public const int progress_circular = 2131427333;
@@ -1621,11 +1621,11 @@ namespace TimerApp
 			// aapt resource value: 0x7f0b003b
 			public const int radio = 2131427387;
 			
-			// aapt resource value: 0x7f0b0063
-			public const int recipeListFilterTextView = 2131427427;
+			// aapt resource value: 0x7f0b0062
+			public const int recipeListFilterTextView = 2131427426;
 			
-			// aapt resource value: 0x7f0b0064
-			public const int recipeListView = 2131427428;
+			// aapt resource value: 0x7f0b0063
+			public const int recipeListView = 2131427427;
 			
 			// aapt resource value: 0x7f0b0014
 			public const int screen = 2131427348;
@@ -1699,23 +1699,20 @@ namespace TimerApp
 			// aapt resource value: 0x7f0b0017
 			public const int src_over = 2131427351;
 			
-			// aapt resource value: 0x7f0b005d
-			public const int startRecipeButton = 2131427421;
-			
 			// aapt resource value: 0x7f0b0052
 			public const int status_bar_latest_event_content = 2131427410;
 			
-			// aapt resource value: 0x7f0b006a
-			public const int stepContinueButton = 2131427434;
-			
-			// aapt resource value: 0x7f0b0065
-			public const int stepInstructionTextView = 2131427429;
-			
-			// aapt resource value: 0x7f0b0062
-			public const int stepListView = 2131427426;
-			
 			// aapt resource value: 0x7f0b0069
-			public const int stepTimeTextView = 2131427433;
+			public const int stepContinueButton = 2131427433;
+			
+			// aapt resource value: 0x7f0b0064
+			public const int stepInstructionTextView = 2131427428;
+			
+			// aapt resource value: 0x7f0b0061
+			public const int stepListView = 2131427425;
+			
+			// aapt resource value: 0x7f0b0068
+			public const int stepTimeTextView = 2131427432;
 			
 			// aapt resource value: 0x7f0b004c
 			public const int submit_area = 2131427404;
@@ -1735,14 +1732,14 @@ namespace TimerApp
 			// aapt resource value: 0x7f0b0056
 			public const int time = 2131427414;
 			
-			// aapt resource value: 0x7f0b0060
-			public const int timeTextView = 2131427424;
+			// aapt resource value: 0x7f0b005e
+			public const int timeTextView = 2131427422;
 			
 			// aapt resource value: 0x7f0b002a
 			public const int title = 2131427370;
 			
-			// aapt resource value: 0x7f0b005e
-			public const int titleTextView = 2131427422;
+			// aapt resource value: 0x7f0b005d
+			public const int titleTextView = 2131427421;
 			
 			// aapt resource value: 0x7f0b002f
 			public const int title_template = 2131427375;
@@ -1943,7 +1940,7 @@ namespace TimerApp
 		{
 			
 			// aapt resource value: 0x7f0c0000
-			public const int MenuRecipeSelect = 2131492864;
+			public const int MenuRecipe = 2131492864;
 			
 			static Menu()
 			{
