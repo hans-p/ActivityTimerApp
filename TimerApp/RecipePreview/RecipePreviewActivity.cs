@@ -9,11 +9,12 @@ using TimerApp.RecipeTimer;
 
 namespace TimerApp.RecipePreview
 {
-    [Activity(Label = "RecipePreviewActivity")]
+    [Activity(Label = "@string/RecipePreview")]
     public class RecipePreviewActivity : AppCompatActivity
     {
         Recipe recipe;
         StepAdapter stepAdapter;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -28,7 +29,7 @@ namespace TimerApp.RecipePreview
             FindViewById<TextView>(Resource.Id.categoriesTextView).Text = string.Join(", ", recipe.Categories);
 
             stepAdapter = new StepAdapter(this);
-            stepAdapter.AddRange(recipe.Steps);
+            stepAdapter.Update(recipe.Steps);
 
             var listView = FindViewById<ListView>(Resource.Id.stepListView);
             listView.Adapter = stepAdapter;

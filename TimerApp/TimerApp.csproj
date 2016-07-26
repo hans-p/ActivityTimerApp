@@ -67,6 +67,8 @@
     <Compile Include="Model\Recipes.cs" />
     <Compile Include="Model\Session.cs" />
     <Compile Include="Model\Step.cs" />
+    <Compile Include="RecipeEdit\RecipeEditActivity.cs" />
+    <Compile Include="RecipeEdit\StepEditActivity.cs" />
     <Compile Include="RecipePreview\RecipePreviewActivity.cs" />
     <Compile Include="RecipePreview\StepAdapter.cs" />
     <Compile Include="RecipeSelect\RecipeAdapter.cs" />
@@ -107,6 +109,21 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\menu\MenuRecipe.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\menu\MenuRecipeList.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\RecipeEdit.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\menu\MenuRecipeEdit.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\StepEdit.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\menu\MenuStepEdit.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -158,6 +175,21 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\SkipPrev.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\Report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-mdpi\Report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\Report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\Report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Report.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions />

@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using TimerApp.Model;
+using TimerApp.RecipeEdit;
 using TimerApp.RecipePreview;
 
 namespace TimerApp.RecipeSelect
@@ -39,6 +40,22 @@ namespace TimerApp.RecipeSelect
             recipeListFilterTextView = FindViewById<MultiAutoCompleteTextView>(Resource.Id.recipeListFilterTextView);
             recipeListFilterTextView.SetTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
             recipeListFilterTextView.Adapter = recipeFilterAutocompleteAdapter;
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.MenuRecipeList, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            if (item.ItemId == Resource.Id.MenuRecipeListAddItem)
+            {
+                var intent = new Intent(this, typeof(RecipeEditActivity));
+                StartActivity(intent);
+            }
+            return base.OnOptionsItemSelected(item);
         }
 
         protected override void OnResume()

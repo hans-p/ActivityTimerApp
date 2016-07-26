@@ -69,8 +69,9 @@ namespace TimerApp.RecipePreview
             NotifyDataSetChanged();
         }
 
-        public void AddRange(IList<Step> steps)
+        public void Update(IList<Step> steps)
         {
+            this.steps.Clear();
             this.steps.AddRange(steps);
             NotifyDataSetChanged();
         }
@@ -82,6 +83,11 @@ namespace TimerApp.RecipePreview
                 steps.Remove(step);
                 NotifyDataSetChanged();
             }
+        }
+
+        public bool Contains(Step step)
+        {
+            return steps.Contains(step);
         }
     }
 }

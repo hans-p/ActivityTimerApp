@@ -8,38 +8,45 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:lines="1"
             android:textSize="24sp"
             android:layout_weight="1"
-            android:id="@+id/titleTextView" />
-        <TextView
+            android:inputType="text"
+            android:hint="Title of the timer"
+            android:id="@+id/titleEditText" />
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:lines="1"
             android:textSize="24sp"
             android:layout_weight="3"
-            android:gravity="right"
-            android:id="@+id/timeTextView" />
+            android:inputType="time"
+            android:hint="hh:mm:ss"
+            android:id="@+id/timeEditText" />
     </LinearLayout>
-    <TextView
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:lines="1"
         android:textSize="16sp"
-        android:id="@+id/categoriesTextView" />
+        android:inputType="text"
+        android:hint="Categories of the timer, comma separated"
+        android:id="@+id/categoriesEditText" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
         android:layout_weight="1">
-        <TextView
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:id="@+id/descriptionTextView" />
+            android:inputType="textMultiLine"
+            android:hint="Description of the timer"
+            android:id="@+id/descriptionEditText" />
     </ScrollView>
     <ListView
         android:layout_width="match_parent"

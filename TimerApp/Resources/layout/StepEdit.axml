@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:lines="1"
+      android:textSize="24sp"
+      android:inputType="text"
+      android:hint="Title of the step"
+      android:id="@+id/titleEditText" />
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:lines="1"
+      android:textSize="24sp"
+      android:inputType="time"
+      android:hint="hh:mm:ss"
+      android:id="@+id/timeEditText" />
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:padding="16dp"
+      android:layout_weight="1">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:inputType="textMultiLine"
+        android:hint="Description of the timer"
+        android:id="@+id/instructionEditText" />
+  </ScrollView>
+  <RadioGroup
+      android:minWidth="25px"
+      android:minHeight="25px"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/radioGroup1">
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start next step automatically"
+        android:checked="true"
+        android:id="@+id/automaticRadioButton" />
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start next step manually"
+        android:id="@+id/manualRadioButton" />
+  </RadioGroup>
+</LinearLayout>
