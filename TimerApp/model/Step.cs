@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 
 namespace TimerApp.Model
@@ -28,6 +29,16 @@ namespace TimerApp.Model
             Instruction = step.Instruction;
             Time = step.Time;
             ContinuationMode = step.ContinuationMode;
+        }
+
+        public string Serialize()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
+
+        public static Step DeSerialize(string json)
+        {
+            return JsonConvert.DeserializeObject<Step>(json);
         }
     }
 }

@@ -34,15 +34,7 @@ namespace TimerApp.RecipeEdit
             automaticRadioButton = FindViewById<RadioButton>(Resource.Id.automaticRadioButton);
             manualRadioButton = FindViewById<RadioButton>(Resource.Id.manualRadioButton);
 
-            var stepJson = Intent.GetStringExtra("Step");
-            if (!string.IsNullOrWhiteSpace(stepJson))
-            {
-                step = JsonConvert.DeserializeObject<Step>(stepJson);
-            }
-            else
-            {
-                step = new Step();
-            }
+            step = Step.DeSerialize(Intent.GetStringExtra(Step.IntentKey));
 
             updateFields();
         }
@@ -65,8 +57,9 @@ namespace TimerApp.RecipeEdit
                 if (saveFields())
                 {
                     var intent = new Intent();
-                    intent.PutExtra("Step", JsonConvert.SerializeObject(step));
+                    intent.PutExtra(Step.IntentKey, step.Serialize());
                     SetResult(Result.Ok, intent);
+                    Finish();
                 }
             }
             return base.OnOptionsItemSelected(item);

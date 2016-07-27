@@ -12,6 +12,7 @@ using System.Linq;
 using TimerApp.Model;
 using TimerApp.RecipePreview;
 using Android.Runtime;
+using TimerApp.Utils;
 
 namespace TimerApp.RecipeEdit
 {
@@ -58,8 +59,10 @@ namespace TimerApp.RecipeEdit
         {
             if (item.ItemId == Resource.Id.MenuAddStepItem)
             {
-                recipe.Steps.Add(new Step { Title = $"step {recipe.Steps.Count}, select to edit" });
-                stepAdapter.Update(recipe.Steps);
+                editedStepIndex = recipe.Steps.Count;
+                var intent = new Intent(this, typeof(StepEditActivity));
+                intent.PutExtra(Step.IntentKey, new Step().Serialize());
+                StartActivityForResult(intent, RequestCode.Get(typeof(StepEditActivity)));
             }
             else if (item.ItemId == Resource.Id.MenuCancelItem)
             {
@@ -87,8 +90,8 @@ namespace TimerApp.RecipeEdit
             {
                 editedStepIndex = position;
                 var intent = new Intent(this, typeof(StepEditActivity));
-                intent.PutExtra("Step", JsonConvert.SerializeObject(recipe.Steps[position]).ToString());
-                StartActivityForResult(intent, 1);
+                intent.PutExtra(Step.IntentKey, JsonConvert.SerializeObject(recipe.Steps[position]).ToString());
+                StartActivityForResult(intent, RequestCode.Get(typeof(StepEditActivity)));
             }
         }
 
@@ -96,12 +99,19 @@ namespace TimerApp.RecipeEdit
 
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         {
-            if (requestCode == 1 && resultCode == Result.Ok)
+            if (requestCode == RequestCode.Get(typeof(StepEditActivity)))
             {
-                var stepJson = data.GetStringExtra("Step");
-                if (!string.IsNullOrWhiteSpace(stepJson))
+                if (resultCode == Result.Ok)
                 {
-                    recipe.Steps[editedStepIndex] = JsonConvert.DeserializeObject<Step>(stepJson);
+                    var step = Step.DeSerialize(data.GetStringExtra(Step.IntentKey));
+                    if (recipe.Steps.Count == editedStepIndex)
+                    {
+                        recipe.Steps.Add(step);
+                    }
+                    else
+                    {
+                        recipe.Steps[editedStepIndex] = step;
+                    }
                     stepAdapter.Update(recipe.Steps);
                     updateLabel();
                 }
