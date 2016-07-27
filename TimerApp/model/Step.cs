@@ -10,6 +10,7 @@ namespace TimerApp.Model
 
     public class Step
     {
+        public long _id { get; set; } = -1L;
         public string Title { get; set; }
         public string Instruction { get; set; }
         public TimeSpan Time { get; set; }
@@ -17,5 +18,14 @@ namespace TimerApp.Model
 
         public bool IsTimed { get { return Time.TotalMilliseconds > 0; } }
         public bool IsTitleOnly { get { return string.IsNullOrWhiteSpace(Instruction); } }
+
+        public void CopyFrom(Step step)
+        {
+            _id = step._id;
+            Title = step.Title;
+            Instruction = step.Instruction;
+            Time = step.Time;
+            ContinuationMode = step.ContinuationMode;
+        }
     }
 }

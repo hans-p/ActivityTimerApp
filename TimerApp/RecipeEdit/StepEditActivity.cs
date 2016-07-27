@@ -1,6 +1,5 @@
 using Android.App;
 using Android.Content;
-using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Support.V7.App;
@@ -10,7 +9,6 @@ using Newtonsoft.Json;
 using System;
 using System.Linq;
 using TimerApp.Model;
-using TimerApp.RecipePreview;
 
 namespace TimerApp.RecipeEdit
 {
@@ -70,7 +68,11 @@ namespace TimerApp.RecipeEdit
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            if (item.ItemId == Resource.Id.MenuStepEditSaveItem)
+            if (item.ItemId == Resource.Id.MenuUndoChangesItem)
+            {
+                //todo
+            }
+            else if (item.ItemId == Resource.Id.MenuSaveItem)
             {
                 if (saveFields())
                 {

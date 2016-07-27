@@ -68,12 +68,16 @@ namespace TimerApp.RecipeEdit
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            if (item.ItemId == Resource.Id.MenuRecipeEditAddStepItem)
+            if (item.ItemId == Resource.Id.MenuAddStepItem)
             {
                 recipe.Steps.Add(new Step { Title = $"step {recipe.Steps.Count}, select to edit" });
                 stepAdapter.Update(recipe.Steps);
             }
-            else if (item.ItemId == Resource.Id.MenuRecipeEditSaveItem)
+            else if (item.ItemId == Resource.Id.MenuUndoChangesItem)
+            {
+                //todo
+            }
+            else if (item.ItemId == Resource.Id.MenuSaveItem)
             {
                 saveFields();
                 updateLabel();

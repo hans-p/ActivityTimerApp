@@ -4,6 +4,7 @@ using Android.OS;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -50,8 +51,11 @@ namespace TimerApp.RecipeSelect
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            if (item.ItemId == Resource.Id.MenuRecipeListAddItem)
+            if (item.ItemId == Resource.Id.MenuAddTimerItem)
             {
+                var recipe = new Recipe { Title = $"new recipe {Recipes.RecipeList.Count}" };
+                Recipes.RecipeList.Add(recipe);
+                var index = Recipes.RecipeList.IndexOf(recipe);
                 var intent = new Intent(this, typeof(RecipeEditActivity));
                 StartActivity(intent);
             }

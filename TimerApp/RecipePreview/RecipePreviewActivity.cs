@@ -56,7 +56,7 @@ namespace TimerApp.RecipePreview
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            if (item.ItemId == Resource.Id.MenuRecipeStartItem)
+            if (item.ItemId == Resource.Id.MenuStartTimerItem)
             {
                 if (!IsFinishing)
                 {
