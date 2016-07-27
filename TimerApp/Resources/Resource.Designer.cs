@@ -1480,14 +1480,14 @@ namespace TimerApp
 			// aapt resource value: 0x7f0b0079
 			public const int MenuAddTimerItem = 2131427449;
 			
+			// aapt resource value: 0x7f0b0077
+			public const int MenuCancelItem = 2131427447;
+			
 			// aapt resource value: 0x7f0b0078
 			public const int MenuSaveItem = 2131427448;
 			
 			// aapt resource value: 0x7f0b0075
 			public const int MenuStartTimerItem = 2131427445;
-			
-			// aapt resource value: 0x7f0b0077
-			public const int MenuUndoChangesItem = 2131427447;
 			
 			// aapt resource value: 0x7f0b0050
 			public const int action0 = 2131427408;

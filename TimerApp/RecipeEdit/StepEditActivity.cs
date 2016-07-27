@@ -68,7 +68,7 @@ namespace TimerApp.RecipeEdit
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            if (item.ItemId == Resource.Id.MenuUndoChangesItem)
+            if (item.ItemId == Resource.Id.MenuCancelItem)
             {
                 //todo
             }

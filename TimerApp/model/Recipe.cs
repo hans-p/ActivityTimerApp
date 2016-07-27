@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -11,6 +12,8 @@ namespace TimerApp.Model
         public TimeSpan Time { get; set; }
         public List<string> Categories { get; set; } = new List<string>();
         public List<Step> Steps { get; set; } = new List<Step>();
+
+        public static string IntentKey { get; } = "Recipe";
 
         public Step GetStepOrNull(int at)
         {
@@ -29,6 +32,16 @@ namespace TimerApp.Model
             Time = recipe.Time;
             Categories = recipe.Categories;
             Steps = recipe.Steps;
+        }
+
+        public string Serialize()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
+
+        public static Recipe DeSerialize(string json)
+        {
+            return JsonConvert.DeserializeObject<Recipe>(json);
         }
     }
 }

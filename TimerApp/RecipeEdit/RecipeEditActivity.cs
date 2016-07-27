@@ -32,7 +32,7 @@ namespace TimerApp.RecipeEdit
 
             errorDrawable = (int)Build.VERSION.SdkInt < 23 ? Resources.GetDrawable(Resource.Drawable.Report) : GetDrawable(Resource.Drawable.Report);
 
-            recipe = new Recipe();
+            recipe = Recipe.DeSerialize(Intent.GetStringExtra(Recipe.IntentKey));
 
             titleEditText = FindViewById<EditText>(Resource.Id.titleEditText);
             timeEditText = FindViewById<EditText>(Resource.Id.timeEditText);
@@ -73,7 +73,7 @@ namespace TimerApp.RecipeEdit
                 recipe.Steps.Add(new Step { Title = $"step {recipe.Steps.Count}, select to edit" });
                 stepAdapter.Update(recipe.Steps);
             }
-            else if (item.ItemId == Resource.Id.MenuUndoChangesItem)
+            else if (item.ItemId == Resource.Id.MenuCancelItem)
             {
                 //todo
             }

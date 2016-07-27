@@ -19,6 +19,8 @@ namespace TimerApp.Model
         public bool IsTimed { get { return Time.TotalMilliseconds > 0; } }
         public bool IsTitleOnly { get { return string.IsNullOrWhiteSpace(Instruction); } }
 
+        public static string IntentKey { get; } = "Step";
+
         public void CopyFrom(Step step)
         {
             _id = step._id;

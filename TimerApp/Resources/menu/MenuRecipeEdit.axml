@@ -7,9 +7,9 @@
       android:title="Add step"
       app:showAsAction="always"/>
   <item
-      android:id="@+id/MenuUndoChangesItem"
+      android:id="@+id/MenuCancelItem"
       android:orderInCategory="2"
-      android:title="Undo changes"
+      android:title="Cancel"
       app:showAsAction="always"/>
   <item
       android:id="@+id/MenuSaveItem"

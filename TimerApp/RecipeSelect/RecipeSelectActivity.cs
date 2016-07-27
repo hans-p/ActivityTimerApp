@@ -53,10 +53,8 @@ namespace TimerApp.RecipeSelect
         {
             if (item.ItemId == Resource.Id.MenuAddTimerItem)
             {
-                var recipe = new Recipe { Title = $"new recipe {Recipes.RecipeList.Count}" };
-                Recipes.RecipeList.Add(recipe);
-                var index = Recipes.RecipeList.IndexOf(recipe);
                 var intent = new Intent(this, typeof(RecipeEditActivity));
+                intent.PutExtra(Recipe.IntentKey, new Recipe().Serialize());
                 StartActivity(intent);
             }
             return base.OnOptionsItemSelected(item);
