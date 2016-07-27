@@ -22,15 +22,6 @@ namespace TimerApp.Model
 
         public static string IntentKey { get; } = "Step";
 
-        public void CopyFrom(Step step)
-        {
-            _id = step._id;
-            Title = step.Title;
-            Instruction = step.Instruction;
-            Time = step.Time;
-            ContinuationMode = step.ContinuationMode;
-        }
-
         public string Serialize()
         {
             return JsonConvert.SerializeObject(this);

@@ -1,10 +1,10 @@
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Runtime;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,6 @@ using TimerApp.Model;
 using TimerApp.RecipeEdit;
 using TimerApp.RecipePreview;
 using TimerApp.Utils;
-using Android.Runtime;
 
 namespace TimerApp.RecipeSelect
 {
@@ -68,7 +67,7 @@ namespace TimerApp.RecipeSelect
             {
                 if (resultCode == Result.Ok)
                 {
-                    Recipes.RecipeList.Add(Recipe.DeSerialize(data.GetStringExtra(Recipe.IntentKey)));
+                    Recipes.AddOrUpdate(Recipe.DeSerialize(data.GetStringExtra(Recipe.IntentKey)));
                     recipeAdapter.UpdateRecipes(Recipes.RecipeList);
                 }
             }
@@ -127,7 +126,7 @@ namespace TimerApp.RecipeSelect
             var json = (JArray)JObject.Parse(content).GetValue("Recipes");
             var recipes = json.ToObject<List<Recipe>>();
             Recipes.RecipeList.Clear();
-            Recipes.RecipeList.AddRange(recipes);
+            Recipes.AddOrUpdate(recipes);
             recipeAdapter.UpdateRecipes(Recipes.RecipeList);
             recipeFilterAutocompleteAdapter.Update(Recipes.Categories);
         }

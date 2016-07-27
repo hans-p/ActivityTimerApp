@@ -177,7 +177,7 @@ namespace TimerApp.RecipeEdit
                 titleEditText.RequestFocus();
                 return false;
             }
-            if (Recipes.RecipeList.Any(x => x.Title == title))
+            if (Recipes.NameExists(title, recipe._id))
             {
                 titleEditText.SetError("Title already in use", errorDrawable);
                 titleEditText.RequestFocus();

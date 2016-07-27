@@ -5,7 +5,7 @@ using TimerApp.RecipeEdit;
 
 namespace TimerApp.Utils
 {
-    public class RequestCode
+    public static class RequestCode
     {
         static List<Type> activitytypes = new List<Type>
         {

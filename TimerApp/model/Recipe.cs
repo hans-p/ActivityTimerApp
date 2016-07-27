@@ -24,16 +24,6 @@ namespace TimerApp.Model
             return null;
         }
 
-        public void CopyFrom(Recipe recipe)
-        {
-            _id = recipe._id;
-            Title = recipe.Title;
-            Description = recipe.Description;
-            Time = recipe.Time;
-            Categories = recipe.Categories;
-            Steps = recipe.Steps;
-        }
-
         public string Serialize()
         {
             return JsonConvert.SerializeObject(this);
