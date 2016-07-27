@@ -68,8 +68,13 @@ namespace TimerApp.RecipeEdit
             }
             else if (item.ItemId == Resource.Id.MenuSaveItem)
             {
-                saveFields();
-                updateLabel();
+                if (saveFields())
+                {
+                    var intent = new Intent();
+                    intent.PutExtra(Recipe.IntentKey, recipe.Serialize());
+                    SetResult(Result.Ok, intent);
+                    Finish();
+                }
             }
             return base.OnOptionsItemSelected(item);
         }
@@ -191,17 +196,17 @@ namespace TimerApp.RecipeEdit
             descriptionEditText.Text = recipe.Description;
         }
 
-        void saveFields()
+        bool saveFields()
         {
             if (!checkTitle())
             {
-                return;
+                return false;
             }
             recipe.Title = titleEditText.Text.ToString();
 
             if (!checkTime())
             {
-                return;
+                return false;
             }
             TimeSpan time;
             if (TimeSpan.TryParse(timeEditText.Text.ToString(), out time))
@@ -216,6 +221,8 @@ namespace TimerApp.RecipeEdit
                 .ToList();
 
             recipe.Description = descriptionEditText.Text.ToString();
+
+            return true;
         }
 
         void updateLabel()

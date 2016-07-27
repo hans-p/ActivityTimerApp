@@ -66,7 +66,11 @@ namespace TimerApp.RecipeSelect
         {
             if (requestCode == RequestCode.Get(typeof(RecipeEditActivity)))
             {
-
+                if (resultCode == Result.Ok)
+                {
+                    Recipes.RecipeList.Add(Recipe.DeSerialize(data.GetStringExtra(Recipe.IntentKey)));
+                    recipeAdapter.UpdateRecipes(Recipes.RecipeList);
+                }
             }
             base.OnActivityResult(requestCode, resultCode, data);
         }

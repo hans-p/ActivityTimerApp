@@ -11,5 +11,10 @@ namespace TimerApp.Model
         public static List<Session> SessionList { get; set; } = new List<Session>();
 
         public static List<string> Categories { get { return RecipeList.SelectMany(x => x.Categories).ToList(); } }
+
+        public static void AddOrUpdate()
+        {
+
+        }
     }
 }
