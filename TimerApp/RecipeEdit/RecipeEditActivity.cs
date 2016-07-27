@@ -46,19 +46,6 @@ namespace TimerApp.RecipeEdit
             var listView = FindViewById<ListView>(Resource.Id.stepListView);
             listView.Adapter = stepAdapter;
             listView.OnItemClickListener = this;
-
-            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-            SupportActionBar.SetDisplayShowHomeEnabled(true);
-        }
-
-        public override bool OnSupportNavigateUp()
-        {
-            if (!IsFinishing)
-            {
-                Finish();
-                return true;
-            }
-            return false;
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -76,7 +63,8 @@ namespace TimerApp.RecipeEdit
             }
             else if (item.ItemId == Resource.Id.MenuCancelItem)
             {
-                //todo
+                SetResult(Result.Canceled);
+                Finish();
             }
             else if (item.ItemId == Resource.Id.MenuSaveItem)
             {

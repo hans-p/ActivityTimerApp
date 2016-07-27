@@ -45,19 +45,6 @@ namespace TimerApp.RecipeEdit
             }
 
             updateFields();
-
-            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-            SupportActionBar.SetDisplayShowHomeEnabled(true);
-        }
-
-        public override bool OnSupportNavigateUp()
-        {
-            if (!IsFinishing)
-            {
-                Finish();
-                return true;
-            }
-            return false;
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -70,7 +57,8 @@ namespace TimerApp.RecipeEdit
         {
             if (item.ItemId == Resource.Id.MenuCancelItem)
             {
-                //todo
+                SetResult(Result.Canceled);
+                Finish();
             }
             else if (item.ItemId == Resource.Id.MenuSaveItem)
             {
