@@ -2,8 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
   <item
-      android:id="@+id/MenuStartTimerItem"
+      android:id="@+id/MenuEditItem"
       android:orderInCategory="1"
+      android:title="Edit"
+      app:showAsAction="always"/>
+  <item
+      android:id="@+id/MenuDeleteItem"
+      android:orderInCategory="2"
+      android:title="Delete"
+      app:showAsAction="always"/>
+  <item
+      android:id="@+id/MenuStartTimerItem"
+      android:orderInCategory="3"
       android:title="Start timer"
       app:showAsAction="always"/>
 </menu>

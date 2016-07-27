@@ -1,11 +1,14 @@
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Runtime;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 using TimerApp.Model;
+using TimerApp.RecipeEdit;
 using TimerApp.RecipeTimer;
+using TimerApp.Utils;
 
 namespace TimerApp.RecipePreview
 {
@@ -56,7 +59,17 @@ namespace TimerApp.RecipePreview
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            if (item.ItemId == Resource.Id.MenuStartTimerItem)
+            if (item.ItemId == Resource.Id.MenuEditItem)
+            {
+                var intent = new Intent(this, typeof(RecipeEditActivity));
+                intent.PutExtra(Recipe.IntentKey, recipe.Serialize());
+                StartActivityForResult(intent, RequestCode.Get(typeof(RecipeEditActivity)));
+            }
+            else if (item.ItemId == Resource.Id.MenuDeleteItem)
+            {
+
+            }
+            else if (item.ItemId == Resource.Id.MenuStartTimerItem)
             {
                 if (!IsFinishing)
                 {
@@ -70,6 +83,15 @@ namespace TimerApp.RecipePreview
                 }
             }
             return base.OnOptionsItemSelected(item);
+        }
+
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        {
+            if (requestCode == RequestCode.Get(typeof(RecipeEditActivity)))
+            {
+
+            }
+            base.OnActivityResult(requestCode, resultCode, data);
         }
     }
 }

@@ -13,6 +13,8 @@ using System.Linq;
 using TimerApp.Model;
 using TimerApp.RecipeEdit;
 using TimerApp.RecipePreview;
+using TimerApp.Utils;
+using Android.Runtime;
 
 namespace TimerApp.RecipeSelect
 {
@@ -55,9 +57,18 @@ namespace TimerApp.RecipeSelect
             {
                 var intent = new Intent(this, typeof(RecipeEditActivity));
                 intent.PutExtra(Recipe.IntentKey, new Recipe().Serialize());
-                StartActivity(intent);
+                StartActivityForResult(intent, RequestCode.Get(typeof(RecipeEditActivity)));
             }
             return base.OnOptionsItemSelected(item);
+        }
+
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        {
+            if (requestCode == RequestCode.Get(typeof(RecipeEditActivity)))
+            {
+
+            }
+            base.OnActivityResult(requestCode, resultCode, data);
         }
 
         protected override void OnResume()

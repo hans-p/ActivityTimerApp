@@ -30,14 +30,15 @@ namespace TimerApp.RecipeEdit
 
             SetContentView(Resource.Layout.RecipeEdit);
 
-            errorDrawable = (int)Build.VERSION.SdkInt < 23 ? Resources.GetDrawable(Resource.Drawable.Report) : GetDrawable(Resource.Drawable.Report);
-
-            recipe = Recipe.DeSerialize(Intent.GetStringExtra(Recipe.IntentKey));
-
             titleEditText = FindViewById<EditText>(Resource.Id.titleEditText);
             timeEditText = FindViewById<EditText>(Resource.Id.timeEditText);
             categoriesEditText = FindViewById<EditText>(Resource.Id.categoriesEditText);
             descriptionEditText = FindViewById<EditText>(Resource.Id.descriptionEditText);
+
+            errorDrawable = (int)Build.VERSION.SdkInt < 23 ? Resources.GetDrawable(Resource.Drawable.Report) : GetDrawable(Resource.Drawable.Report);
+
+            recipe = Recipe.DeSerialize(Intent.GetStringExtra(Recipe.IntentKey));
+            updateFields();
 
             stepAdapter = new StepAdapter(this);
             stepAdapter.Update(recipe.Steps);
