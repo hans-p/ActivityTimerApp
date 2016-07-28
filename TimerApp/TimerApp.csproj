@@ -81,7 +81,6 @@
   <ItemGroup>
     <Compile Include="Database\SQLiteManager.cs" />
     <Compile Include="Model\Recipe.cs" />
-    <Compile Include="Model\Recipes.cs" />
     <Compile Include="Model\Session.cs" />
     <Compile Include="Model\Step.cs" />
     <Compile Include="RecipeEdit\RecipeEditActivity.cs" />

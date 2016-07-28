@@ -62,14 +62,15 @@ namespace TimerApp.RecipeSelect
             return base.OnOptionsItemSelected(item);
         }
 
-        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        protected async override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         {
             if (requestCode == RequestCode.Get(typeof(RecipeEditActivity)))
             {
                 if (resultCode == Result.Ok)
                 {
-                    Recipes.AddOrUpdate(Recipe.DeSerialize(data.GetStringExtra(Recipe.IntentKey)));
-                    recipeAdapter.UpdateRecipes(Recipes.RecipeList);
+                    var recipe = Recipe.DeSerialize(data.GetStringExtra(Recipe.IntentKey));
+                    await SQLiteManager.Update(recipe);
+                    recipeAdapter.Add(recipe);
                 }
             }
             base.OnActivityResult(requestCode, resultCode, data);
@@ -105,12 +106,8 @@ namespace TimerApp.RecipeSelect
         {
             if (!IsFinishing)
             {
-                var session = new Session(recipeAdapter.GetItem(position));
-                Recipes.SessionList.Add(session);
-                var sessionPosition = Recipes.SessionList.IndexOf(session);
-
                 var intent = new Intent(this, typeof(RecipePreviewActivity));
-                intent.PutExtra("RecipeId", Recipes.RecipeList.IndexOf(recipeAdapter.GetItem(position)));
+                intent.PutExtra(Recipe.IntentKey, recipeAdapter.GetItem(position).Serialize());
                 StartActivity(intent);
             }
         }
@@ -136,12 +133,8 @@ namespace TimerApp.RecipeSelect
                 {
                     await SQLiteManager.Update(recipe);
                 }
-
-                /*Recipes.RecipeList.Clear();
-                Recipes.AddOrUpdate(recipes);
-                recipeAdapter.UpdateRecipes(Recipes.RecipeList);
-                recipeFilterAutocompleteAdapter.Update(Recipes.Categories);*/
             }
+            recipeAdapter.UpdateRecipes(recipes);
         }
     }
 }

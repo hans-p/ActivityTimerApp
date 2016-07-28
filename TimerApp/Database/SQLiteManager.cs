@@ -21,7 +21,7 @@ namespace TimerApp.Database
                 await connection.CreateTableAsync<Recipe>();
                 await connection.CreateTableAsync<Step>();
             }
-            catch (SQLiteException ex)
+            catch (SQLiteException)
             {
                 return false;
             }

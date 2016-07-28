@@ -24,7 +24,7 @@ namespace TimerApp.RecipeTimer
         {
             base.OnCreate(bundle);
 
-            session = Recipes.SessionList[Intent.GetIntExtra("SessionId", 0)];
+            session = Session.DeSerialize(Intent.GetStringExtra(Session.IntentKey));
             SetContentView(Resource.Layout.Timer);
 
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
@@ -56,11 +56,6 @@ namespace TimerApp.RecipeTimer
 
         public override void Finish()
         {
-            if (Recipes.SessionList.Contains(session))
-            {
-                Recipes.SessionList.Remove(session);
-            }
-
             base.Finish();
         }
 

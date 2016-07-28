@@ -24,7 +24,7 @@ namespace TimerApp.RecipePreview
 
             SetContentView(Resource.Layout.Recipe);
 
-            recipe = Recipes.RecipeList[Intent.GetIntExtra("RecipeId", 0)];
+            recipe = Recipe.DeSerialize(Intent.GetStringExtra(Recipe.IntentKey));
 
             FindViewById<TextView>(Resource.Id.titleTextView).Text = recipe.Title;
             FindViewById<TextView>(Resource.Id.descriptionTextView).Text = recipe.Description;
@@ -73,12 +73,8 @@ namespace TimerApp.RecipePreview
             {
                 if (!IsFinishing)
                 {
-                    var session = new Session(recipe);
-                    Recipes.SessionList.Add(session);
-                    var sessionPosition = Recipes.SessionList.IndexOf(session);
-
                     var intent = new Intent(this, typeof(TimerActivity));
-                    intent.PutExtra("SessionId", sessionPosition);
+                    intent.PutExtra(Session.IntentKey, new Session(recipe).Serialize());
                     StartActivity(intent);
                 }
             }

@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 
 namespace TimerApp.Model
@@ -42,6 +43,18 @@ namespace TimerApp.Model
             CurrentStepIndex -= 1;
             CurrentStepStart = DateTime.UtcNow;
             return Recipe.Steps[CurrentStepIndex];
+        }
+
+        public static string IntentKey { get; } = "Session";
+
+        public string Serialize()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
+
+        public static Session DeSerialize(string json)
+        {
+            return JsonConvert.DeserializeObject<Session>(json);
         }
     }
 }
