@@ -17,6 +17,11 @@ namespace TimerApp.RecipePreview
     {
         Recipe recipe;
         StepAdapter stepAdapter;
+        public static readonly string ResultIntentKey = "RecipePreviewResult";
+        public enum RecipeResult
+        {
+            Delete,
+        }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -67,7 +72,11 @@ namespace TimerApp.RecipePreview
             }
             else if (item.ItemId == Resource.Id.MenuDeleteItem)
             {
-
+                var intent = new Intent();
+                intent.PutExtra(Recipe.IntentKey, recipe.Serialize());
+                intent.PutExtra(RecipePreviewActivity.ResultIntentKey, (int)RecipeResult.Delete);
+                SetResult(Result.Ok, intent);
+                Finish();
             }
             else if (item.ItemId == Resource.Id.MenuStartTimerItem)
             {

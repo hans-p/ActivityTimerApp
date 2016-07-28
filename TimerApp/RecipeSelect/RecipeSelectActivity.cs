@@ -73,6 +73,18 @@ namespace TimerApp.RecipeSelect
                     recipeAdapter.Add(recipe);
                 }
             }
+            else if (requestCode == RequestCode.Get(typeof(RecipePreviewActivity)))
+            {
+                if (resultCode == Result.Ok)
+                {
+                    var recipe = Recipe.DeSerialize(data.GetStringExtra(Recipe.IntentKey));
+                    if (data.GetIntExtra(RecipePreviewActivity.ResultIntentKey, -1) == (int)RecipePreviewActivity.RecipeResult.Delete)
+                    {
+                        await SQLiteManager.Delete(recipe);
+                        recipeAdapter.Remove(recipe);
+                    }
+                }
+            }
             base.OnActivityResult(requestCode, resultCode, data);
         }
 
@@ -108,7 +120,7 @@ namespace TimerApp.RecipeSelect
             {
                 var intent = new Intent(this, typeof(RecipePreviewActivity));
                 intent.PutExtra(Recipe.IntentKey, recipeAdapter.GetItem(position).Serialize());
-                StartActivity(intent);
+                StartActivityForResult(intent, RequestCode.Get(typeof(RecipePreviewActivity)));
             }
         }
 

@@ -92,11 +92,8 @@ namespace TimerApp.RecipeSelect
 
         public void Remove(Recipe recipe)
         {
-            if (recipes.Contains(recipe))
-            {
-                recipes.Remove(recipe);
-                NotifyDataSetChanged();
-            }
+            recipes.RemoveAll(x => x._id == recipe._id);
+            NotifyDataSetChanged();
         }
 
         public void UpdateFilters(IList<string> filters)
