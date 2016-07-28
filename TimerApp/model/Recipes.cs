@@ -40,7 +40,7 @@ namespace TimerApp.Model
             }
         }
 
-        public static bool NameExists(string title, long _id)
+        public static bool NameExists(string title, int? _id)
         {
             return RecipeList.Any(x => x._id != _id && x.Title == title);
         }

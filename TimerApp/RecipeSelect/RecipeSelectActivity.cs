@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using TimerApp.Database;
 using TimerApp.Model;
 using TimerApp.RecipeEdit;
 using TimerApp.RecipePreview;
@@ -118,17 +119,29 @@ namespace TimerApp.RecipeSelect
 
         async void loadRecipes()
         {
-            string content;
-            using (var s = new StreamReader(Assets.Open("DefaultRecipes.json")))
+            await SQLiteManager.CreateDatabase();
+            var recipes = await SQLiteManager.GetRecipes();
+
+            if (recipes == null || recipes.Count == 0)
             {
-                content = await s.ReadToEndAsync();
+                // load default recipes
+                string content;
+                using (var s = new StreamReader(Assets.Open("DefaultRecipes.json")))
+                {
+                    content = await s.ReadToEndAsync();
+                }
+                var json = (JArray)JObject.Parse(content).GetValue("Recipes");
+                recipes = json.ToObject<List<Recipe>>();
+                foreach (var recipe in recipes)
+                {
+                    await SQLiteManager.Update(recipe);
+                }
+
+                /*Recipes.RecipeList.Clear();
+                Recipes.AddOrUpdate(recipes);
+                recipeAdapter.UpdateRecipes(Recipes.RecipeList);
+                recipeFilterAutocompleteAdapter.Update(Recipes.Categories);*/
             }
-            var json = (JArray)JObject.Parse(content).GetValue("Recipes");
-            var recipes = json.ToObject<List<Recipe>>();
-            Recipes.RecipeList.Clear();
-            Recipes.AddOrUpdate(recipes);
-            recipeAdapter.UpdateRecipes(Recipes.RecipeList);
-            recipeFilterAutocompleteAdapter.Update(Recipes.Categories);
         }
     }
 }
