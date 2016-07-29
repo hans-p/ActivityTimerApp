@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Hello">Hello World, Click Me!</string>
+    <string name="RecipeSelectActivity">Activities</string>
+    <string name="RecipePreview">Recipe</string>
+    <string name="RecipeEdit">Edit recipe</string>
+    <string name="RecipeEditSaved">Edit recipe (saved)</string>
+    <string name="RecipeEditUnSaved">Edit recipe (unsaved)</string>
+    <string name="StepEdit">Edit step</string>
+    <string name="StepEditSaved">Edit step (saved)</string>
+    <string name="StepEditUnSaved">Edit step (unsaved)</string>
     <string name="ApplicationName">TimerAppUnitTest</string>
 </resources>
