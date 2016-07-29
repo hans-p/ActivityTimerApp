@@ -17,9 +17,9 @@ namespace TimerApp.Model
         public List<string> Categories { get; set; } = new List<string>();
         [Ignore]
         public List<Step> Steps { get; set; } = new List<Step>();
-        [Ignore]
+        [Ignore, JsonIgnore]
         public static string IntentKey { get; } = "Recipe";
-
+        [JsonIgnore]
         public string CategoriesSqlite
         {
             //hack property for sqlite
