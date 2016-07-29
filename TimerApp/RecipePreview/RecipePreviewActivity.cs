@@ -5,6 +5,7 @@ using Android.Runtime;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
+using TimerApp.Database;
 using TimerApp.Model;
 using TimerApp.RecipeEdit;
 using TimerApp.RecipeTimer;
@@ -17,10 +18,14 @@ namespace TimerApp.RecipePreview
     {
         Recipe recipe;
         StepAdapter stepAdapter;
+        TextView titleTextView, descriptionTextView, timeTextView, categoriesTextView;
+        ListView stepListView;
+
         public static readonly string ResultIntentKey = "RecipePreviewResult";
         public enum RecipeResult
         {
             Delete,
+            Reload
         }
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -29,18 +34,16 @@ namespace TimerApp.RecipePreview
 
             SetContentView(Resource.Layout.Recipe);
 
-            recipe = Recipe.DeSerialize(Intent.GetStringExtra(Recipe.IntentKey));
-
-            FindViewById<TextView>(Resource.Id.titleTextView).Text = recipe.Title;
-            FindViewById<TextView>(Resource.Id.descriptionTextView).Text = recipe.Description;
-            FindViewById<TextView>(Resource.Id.timeTextView).Text = recipe.Time.ToString("hh\\:mm\\:ss");
-            FindViewById<TextView>(Resource.Id.categoriesTextView).Text = string.Join(", ", recipe.Categories);
-
+            titleTextView = FindViewById<TextView>(Resource.Id.titleTextView);
+            descriptionTextView = FindViewById<TextView>(Resource.Id.descriptionTextView);
+            timeTextView = FindViewById<TextView>(Resource.Id.timeTextView);
+            categoriesTextView = FindViewById<TextView>(Resource.Id.categoriesTextView);
+            stepListView = FindViewById<ListView>(Resource.Id.stepListView);
             stepAdapter = new StepAdapter(this);
-            stepAdapter.Update(recipe.Steps);
+            stepListView.Adapter = stepAdapter;
 
-            var listView = FindViewById<ListView>(Resource.Id.stepListView);
-            listView.Adapter = stepAdapter;
+            recipe = Recipe.DeSerialize(Intent.GetStringExtra(Recipe.IntentKey));
+            UpdateFields();
 
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             SupportActionBar.SetDisplayShowHomeEnabled(true);
@@ -50,6 +53,10 @@ namespace TimerApp.RecipePreview
         {
             if (!IsFinishing)
             {
+                var intent = new Intent();
+                intent.PutExtra(Recipe.IntentKey, recipe.Serialize());
+                intent.PutExtra(RecipePreviewActivity.ResultIntentKey, (int)RecipeResult.Reload);
+                SetResult(Result.Ok, intent);
                 Finish();
                 return true;
             }
@@ -90,13 +97,27 @@ namespace TimerApp.RecipePreview
             return base.OnOptionsItemSelected(item);
         }
 
-        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        protected async override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         {
             if (requestCode == RequestCode.Get(typeof(RecipeEditActivity)))
             {
-
+                if (resultCode == Result.Ok)
+                {
+                    recipe = Recipe.DeSerialize(data.GetStringExtra(Recipe.IntentKey));
+                    await SQLiteManager.Update(recipe);
+                    UpdateFields();
+                }
             }
             base.OnActivityResult(requestCode, resultCode, data);
+        }
+
+        void UpdateFields()
+        {
+            titleTextView.Text = recipe.Title;
+            descriptionTextView.Text = recipe.Description;
+            timeTextView.Text = recipe.Time.ToString("hh\\:mm\\:ss");
+            categoriesTextView.Text = string.Join(", ", recipe.Categories);
+            stepAdapter.Update(recipe.Steps);
         }
     }
 }

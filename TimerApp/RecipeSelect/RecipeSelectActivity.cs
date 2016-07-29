@@ -83,6 +83,10 @@ namespace TimerApp.RecipeSelect
                         await SQLiteManager.Delete(recipe);
                         recipeAdapter.Remove(recipe);
                     }
+                    else if (data.GetIntExtra(RecipePreviewActivity.ResultIntentKey, -1) == (int)RecipePreviewActivity.RecipeResult.Reload)
+                    {
+                        recipeAdapter.Replace(recipe);
+                    }
                 }
             }
             base.OnActivityResult(requestCode, resultCode, data);

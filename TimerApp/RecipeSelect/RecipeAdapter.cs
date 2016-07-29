@@ -102,5 +102,12 @@ namespace TimerApp.RecipeSelect
             this.filters.AddRange(filters);
             NotifyDataSetChanged();
         }
+
+        public void Replace(Recipe recipe)
+        {
+            recipes.RemoveAll(x => x._id == recipe._id);
+            recipes.Add(recipe);
+            NotifyDataSetChanged();
+        }
     }
 }
