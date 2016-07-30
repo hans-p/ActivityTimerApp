@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="ApplicationName">TimerApp</string>
+  <string name="ApplicationName">Activity Timer App</string>
   <string name="RecipeSelectActivity">Activities</string>
   <string name="RecipePreview">Recipe</string>
   <string name="RecipeEdit">Edit recipe</string>
