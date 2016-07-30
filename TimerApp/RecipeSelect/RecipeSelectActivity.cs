@@ -18,7 +18,7 @@ using TimerApp.Utils;
 
 namespace TimerApp.RecipeSelect
 {
-    [Activity(Label = "@string/ApplicationName", MainLauncher = true)]
+    [Activity(Label = "@string/ApplicationName", Theme = "@style/AppTheme", MainLauncher = true)]
     public class RecipeSelectActivity : AppCompatActivity, AdapterView.IOnItemClickListener
     {
         RecipeAdapter recipeAdapter;

@@ -12,7 +12,7 @@ using TimerApp.Model;
 
 namespace TimerApp.RecipeEdit
 {
-    [Activity(Label = "@string/StepEdit")]
+    [Activity(Label = "@string/StepEdit", Theme = "@style/AppTheme")]
     public class StepEditActivity : AppCompatActivity
     {
         Step step;

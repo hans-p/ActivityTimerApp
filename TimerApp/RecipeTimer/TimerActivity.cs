@@ -11,7 +11,7 @@ using Android.Graphics;
 
 namespace TimerApp.RecipeTimer
 {
-    [Activity(Label = "TimerActivity")]
+    [Activity(Label = "TimerActivity", Theme = "@style/AppTheme")]
     public class TimerActivity : AppCompatActivity
     {
         Session session;

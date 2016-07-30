@@ -16,7 +16,7 @@ using TimerApp.Utils;
 
 namespace TimerApp.RecipeEdit
 {
-    [Activity(Label = "@string/RecipeEdit")]
+    [Activity(Label = "@string/RecipeEdit", Theme = "@style/AppTheme")]
     public class RecipeEditActivity : AppCompatActivity, AdapterView.IOnItemClickListener
     {
         Recipe recipe;

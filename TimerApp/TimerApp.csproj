@@ -107,9 +107,6 @@
     <AndroidAsset Include="Assets\RecipesSchema.json" />
     <AndroidAsset Include="Assets\DefaultRecipes.json" />
     <None Include="packages.config" />
-    <None Include="Properties\AndroidManifest.xml">
-      <SubType>Designer</SubType>
-    </None>
     <AndroidResource Include="Resources\layout\Recipe.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -226,6 +223,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions />

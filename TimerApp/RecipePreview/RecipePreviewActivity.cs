@@ -13,7 +13,7 @@ using TimerApp.Utils;
 
 namespace TimerApp.RecipePreview
 {
-    [Activity(Label = "@string/RecipePreview")]
+    [Activity(Label = "@string/RecipePreview", Theme = "@style/AppTheme")]
     public class RecipePreviewActivity : AppCompatActivity
     {
         Recipe recipe;
