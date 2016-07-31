@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingBottom="4dp"
     android:paddingTop="4dp">
-  <TextView
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:textSize="24sp"
-      android:layout_weight="1"
-      android:id="@+id/titleTextView" />
-  <TextView
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:textSize="24sp"
-      android:layout_weight="3"
-      android:gravity="right"
-      android:id="@+id/timeTextView" />
-</LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="24sp"
+        android:maxLines="2"
+        android:id="@+id/titleTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@id/timeTextView" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textSize="24sp"
+        android:gravity="right"
+        android:id="@+id/timeTextView"
+        android:layout_alignParentRight="true" />
+</RelativeLayout>
