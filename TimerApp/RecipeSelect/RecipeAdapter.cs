@@ -28,6 +28,7 @@ namespace TimerApp.RecipeSelect
                 return recipes;
             }
         }
+        public List<string> AllFilters { get { return recipes.SelectMany(x => x.Categories).ToList(); } }
 
         public RecipeAdapter(Context context)
         {

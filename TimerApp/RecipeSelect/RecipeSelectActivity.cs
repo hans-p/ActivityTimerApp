@@ -32,7 +32,6 @@ namespace TimerApp.RecipeSelect
             SetContentView(Resource.Layout.RecipeList);
 
             recipeAdapter = new RecipeAdapter(this);
-            loadRecipes();
 
             var recipeListView = FindViewById<ListView>(Resource.Id.recipeListView);
             recipeListView.Adapter = recipeAdapter;
@@ -43,6 +42,8 @@ namespace TimerApp.RecipeSelect
             recipeListFilterTextView = FindViewById<MultiAutoCompleteTextView>(Resource.Id.recipeListFilterTextView);
             recipeListFilterTextView.SetTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
             recipeListFilterTextView.Adapter = recipeFilterAutocompleteAdapter;
+
+            loadRecipes();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -71,6 +72,7 @@ namespace TimerApp.RecipeSelect
                     var recipe = Recipe.DeSerialize(data.GetStringExtra(Recipe.IntentKey));
                     await SQLiteManager.Update(recipe);
                     recipeAdapter.Add(recipe);
+                    recipeFilterAutocompleteAdapter.Update(recipeAdapter.AllFilters);
                 }
             }
             else if (requestCode == RequestCode.Get(typeof(RecipePreviewActivity)))
@@ -82,10 +84,12 @@ namespace TimerApp.RecipeSelect
                     {
                         await SQLiteManager.Delete(recipe);
                         recipeAdapter.Remove(recipe);
+                        recipeFilterAutocompleteAdapter.Update(recipeAdapter.AllFilters);
                     }
                     else if (data.GetIntExtra(RecipePreviewActivity.ResultIntentKey, -1) == (int)RecipePreviewActivity.RecipeResult.Reload)
                     {
                         recipeAdapter.Replace(recipe);
+                        recipeFilterAutocompleteAdapter.Update(recipeAdapter.AllFilters);
                     }
                 }
             }
@@ -151,6 +155,7 @@ namespace TimerApp.RecipeSelect
                 }
             }
             recipeAdapter.UpdateRecipes(recipes);
+            recipeFilterAutocompleteAdapter.Update(recipeAdapter.AllFilters);
         }
     }
 }
