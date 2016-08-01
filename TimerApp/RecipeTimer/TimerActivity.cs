@@ -30,7 +30,7 @@ namespace TimerApp.RecipeTimer
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             SupportActionBar.SetDisplayShowHomeEnabled(true);
 
-            var color = new Color((int)Build.VERSION.SdkInt < 23 ? Resources.GetColor(Resource.Color.colorAccent) : GetColor(Resource.Color.colorAccent));
+            var color = new Color(Resources.GetColor(Resource.Color.colorAccent));
             buttonProceedFilter = new PorterDuffColorFilter(color, PorterDuff.Mode.SrcAtop);
 
             previousStepButton = FindViewById<ImageButton>(Resource.Id.previousStepButton);

@@ -192,6 +192,24 @@ namespace TimerApp.RecipeEdit
             return false;
         }
 
+        bool checkSteps()
+        {
+            if (recipe.Steps.Count == 0)
+            {
+                var builder = new Android.Support.V7.App.AlertDialog.Builder(this);
+                builder.SetTitle("Error");
+                builder.SetMessage("Can't create a timer with 0 steps");
+                builder.SetCancelable(true);
+                if (!IsFinishing)
+                {
+                    var dialog = builder.Create();
+                    dialog.Show();
+                }
+                return false;
+            }
+            return true;
+        }
+
         void updateFields()
         {
             titleEditText.Text = recipe.Title;
@@ -216,6 +234,11 @@ namespace TimerApp.RecipeEdit
             if (TimeSpan.TryParse(timeEditText.Text.ToString(), out time))
             {
                 recipe.Time = time;
+            }
+
+            if (!checkSteps())
+            {
+                return false;
             }
 
             recipe.Categories = categoriesEditText.Text.ToString()
