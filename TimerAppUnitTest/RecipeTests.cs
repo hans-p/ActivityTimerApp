@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TimerApp.Model;
 
 namespace TimerAppUnitTest
@@ -45,6 +46,19 @@ namespace TimerAppUnitTest
             Assert.True(recipe.Steps[0].recipeId == deserialized.Steps[0].recipeId, $"Recipe step [0] recipeid:{recipe.Steps[0].recipeId} not equal to deserialized:{deserialized.Steps[0].recipeId}");
             Assert.True(recipe.Steps[0].Instruction == deserialized.Steps[0].Instruction, $"Recipe step [0] instruction:{recipe.Steps[0].Instruction} not equal to deserialized:{deserialized.Steps[0].Instruction}");
             Assert.True(recipe.Steps[0].ContinuationMode == deserialized.Steps[0].ContinuationMode, $"Recipe step [0] continuationmode:{recipe.Steps[0].ContinuationMode} not equal to deserialized:{deserialized.Steps[0].ContinuationMode}");
+        }
+
+        [Test]
+        public void RecipeSqliteCategoriesTest()
+        {
+            var recipe = new Recipe { Categories = new List<string> { "cat1", "cat2", "cat3" } };
+            var recipeCat = recipe.Categories.ToArray();
+            var recipeListFromSqlite = recipe.CategoriesSqlite.Split(',').ToArray();
+            for (var i = 0; i < recipeCat.Length; i++)
+            {
+                Assert.True(recipeListFromSqlite[i] == recipeListFromSqlite[i], $"Categories not equal {recipeListFromSqlite[i]} - {recipeListFromSqlite[i]}");
+            }
+            Assert.True(recipe.Categories.All(x => recipeListFromSqlite.Any()));
         }
     }
 }
